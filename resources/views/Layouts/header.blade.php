@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -81,12 +81,27 @@
                                 Registro Mascotas</a>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('agenda/citaMedica')}}">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span data-feather="calendar"></span>
                             Agenda
                         </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{url('agenda/citaMedica')}}">
+                                <span data-feather="activity"></span>
+                                Citas Medicas
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+
+                            <a class="dropdown-item" href="{{url('infoAdd')}}">
+                                <span data-feather="award"></span>
+                                Reserva Spa
+                            </a>
+                        </div>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('empleado')}}">
                             <span data-feather="bar-chart-2"></span>
@@ -96,7 +111,7 @@
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span data-feather="github"></span>
+                            <span data-feather="bookmark"></span>
                             Info Mascota
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -125,7 +140,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <span data-feather="layers"></span>
-                            Integrations
                         </a>
                     </li>
                 </ul>

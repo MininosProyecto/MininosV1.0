@@ -10,8 +10,9 @@
 
 @section('Contenido')
 
+    @include('infoAdd.search')
 
-    <div style="margin-bottom: -5%;">
+    <div style="margin-bottom: -20%;">
 
         {!! Form::open(array('url'=>'infoAdd', 'method'=>'POST', 'autocomplete'=>'off')) !!}
         <div class="row">

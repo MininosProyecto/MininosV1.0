@@ -2,43 +2,45 @@
 
 namespace App\Http\Controllers;
 
-use App\Agenda;
+use App\Alimentacion;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
-class AgendaController extends Controller
+class CitaMedicaController extends Controller
 {
-
     public function index(Request $request)
     {
         if ($request)
         {
             $query = trim($request->get('searchText'));
 
-            $agendas = DB::table('agenda as ag')
-                ->join('empleado as emp', 'idEmpleado', '=', 'Empleados_id_veterinario')
+            $citas = DB::table('cita_medica as cit')
+                ->join('mascota as m', 'id_mascota', '=', 'Mascota_id_mascota')
+                ->join('agenda as a', 'idAgenda','=','Agenda_idAgenda')
 
-                ->select('ag.idAgenda', 'ag.fecha_agenda', 'ag.estado' , 'ag.Empleados_id_veterinario')
+                ->select('cit.id_cita', 'm.nombre_mascota', 'a.fecha_agenda' ,'a.estado', 'a.Empleados_id_veterinario')
                 ->where([
-                    ['ag.idAgenda', 'LIKE', '%'.$query.'%'],
+                    ['cit.id_cita', 'LIKE', '%'.$query.'%'],
                 ])
                 ->orWhere([
-                    ['ag.Empleados_id_veterinario', 'LIKE', '%'.$query.'%']
+                    ['m.id_mascota', 'LIKE', '%'.$query.'%']
                 ])
-                ->orderBy('ag.idAgenda', 'desc')
+                ->orderBy('cit.id_cita', 'desc')
                 ->paginate(7);
 
-            return view('agenda.index',compact('agendas','query'));
+            return view('agenda.citaMedica.index',compact('citas','query'));
         }
     }
 
 
     public function create()
     {
-        $empleados = DB::table('empleado')->select('idEmpleado' , 'nombre_empleado')->get();
+        $mascotas = DB::table('mascota')->select('id_mascota' , 'nombre_mascota')->get();
+        $agendas = DB::table('agenda')->select('idAgenda','fecha_agenda','estado')->get();
 
-        return view('agenda.create', compact('empleados'));
+        return view('agenda.citaMedica.create', compact('mascotas','agendas'));
     }
 
 
@@ -58,8 +60,6 @@ class AgendaController extends Controller
 
         return Redirect::to('agenda/citaMedica/create');
     }
-
-
     public function show($id)
     {
         //

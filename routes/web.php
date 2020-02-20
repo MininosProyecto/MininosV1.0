@@ -29,6 +29,8 @@ Route::resource('empleado', 'EmpleadoController');
 
 Route::resource('vacunas', 'VacunaController');
 
+Route::resource('agenda/citaMedica', 'CitaMedicaController');
+
 Route::resource('alimentacion', 'AlimentacionController');
 
 Route::resource('Mascota/diagnostico', 'DiagnosticoController');

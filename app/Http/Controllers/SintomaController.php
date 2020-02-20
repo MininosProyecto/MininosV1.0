@@ -33,21 +33,23 @@ class SintomaController extends Controller
 
     public function create()
     {
-        return view('Mascota.sintomas.create');
+        $historiaClinica = DB::table('historia_clinica')->select('idHistoriaClinica')->get();
+
+        return view('Mascota.sintomas.create', compact('historiaClinica'));
     }
 
 
     public function store(Request $request)
     {
-        $clientes = new Sintoma();
+        $sintomas = new Sintoma();
 
-        $clientes->fecha = $request->get('fecha');
-        $clientes->descripcion = $request->get('descripcion');
-        $clientes->historiaClinica_id_historiaClinica = $request->get('historiaClinica_id_historiaClinica');
+        $sintomas->fecha = $request->get('fecha');
+        $sintomas->descripcion = $request->get('descripcion');
+        $sintomas->historiaClinica_id_historiaClinica = $request->get('historiaClinica_id_historiaClinica');
 
-        $clientes->save();
+        $sintomas->save();
 
-        return Redirect('Mascota/sintoma/create');
+        return Redirect('Mascota/sintomas/create');
     }
 
     public function show($id)

@@ -108,18 +108,17 @@
         </div>
         <hr width="1500" style="background: #99999961;">
 
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
             <div class="form-group">
                 <button type="reset" class="btn btn-danger btn-xl" id="">Limpiar</button>
             </div>
         </div>
 
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
             <div class="form-group">
                 <button type="submit" class="btn btn-primary btn-xl" id="Registrar">Siguiente</button>
             </div>
         </div>
-
     </div>
     {!! Form::close() !!}
 </div>

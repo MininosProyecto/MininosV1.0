@@ -25,6 +25,7 @@
                         <td>Especie</td>
                         <td>Raza</td>
                         <td>Sexo</td>
+                        <td>Acciones</td>
                     </tr>
                     </thead>
                     <tbody>

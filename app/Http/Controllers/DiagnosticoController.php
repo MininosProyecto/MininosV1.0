@@ -33,19 +33,21 @@ class DiagnosticoController extends Controller
 
     public function create()
     {
-        return view('Mascota.diagnostico.create');
+        $historiaClinica = DB::table('historia_clinica')->select('idHistoriaClinica')->get();
+
+        return view('Mascota.diagnostico.create', compact('historiaClinica'));
     }
 
 
     public function store(Request $request)
     {
-        $clientes = new Diagnostico();
+        $diagnosticos = new Diagnostico();
 
-        $clientes->fecha = $request->get('fecha');
-        $clientes->descripcion = $request->get('descripcion');
-        $clientes->historiaClinica_id_historiaClinica = $request->get('historiaClinica_id_historiaClinica');
+        $diagnosticos->fecha = $request->get('fecha');
+        $diagnosticos->descripcion = $request->get('descripcion');
+        $diagnosticos->historiaClinica_id_historiaClinica = $request->get('historiaClinica_id_historiaClinica');
 
-        $clientes->save();
+        $diagnosticos->save();
 
         return Redirect('Mascota/diagnostico/create');
     }

@@ -1,4 +1,4 @@
-{!! Form::open(array('url' => 'agenda/citaMedica', 'method' => 'GET', 'autocomplete' => 'off', 'role' => 'search')) !!}
+{!! Form::open(array('url' => 'infoAdd', 'method' => 'GET', 'autocomplete' => 'off', 'role' => 'search')) !!}
 
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
 

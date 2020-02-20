@@ -24,16 +24,16 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($agendas as $ag)
+                    @foreach($citas as $cit)
                         <tr>
-                            <td scope="row">{{$ag->fecha_agenda}}</td>
-                            <td>{{$ag->estado}}</td>
-                            <td>{{$ag->Veterinario}}</td>
+                            <td scope="row">{{$cit->fecha_agenda}}</td>
+                            <td>{{$cit->estado}}</td>
+                            <td>{{$cit->Veterinario}}</td>
                             <td>
-                                <a href="{{URL::action('AgendaController@edit', $ag->id_raza)}}">
+                                <a href="{{URL::action('AgendaController@edit', $cit->id_raza)}}">
                                     <button class="bnt btn-info">Editar</button>
                                 </a>
-                                <a href="" data-target="#modal-delete-{{$ag->id_raza}}" data-toggle="modal">
+                                <a href="" data-target="#modal-delete-{{$cit->id_raza}}" data-toggle="modal">
                                     <button class="bnt btn-danger">Eliminar</button>
                                 </a>
                             </td>
@@ -43,7 +43,7 @@
                     </tbody>
                 </table>
             </div>
-            {{$agendas->render()}}
+            {{$citas->render()}}
         </div>
     </div>
 

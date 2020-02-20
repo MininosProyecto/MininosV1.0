@@ -25,7 +25,7 @@
                        data-validation-required-message="Ingrese su Correo por favor" {{old('id_mascota')}}>
                 <p class="help-block text-danger"></p>
             </div>
-        </div>
+        </div1
 
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="form-group">
@@ -93,19 +93,19 @@
 
     <hr width="1500" style="background: #99999961;">
 
-    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
         <div class="form-group">
-            <a href="{{url('cliente')}}"><button type="button" class="btn btn-primary btn-xl" id="">Atras</button></a>
+            <a href="{{url('cliente/create')}}"><button type="button" class="btn btn-primary btn-xl" id="">Atras</button></a>
         </div>
     </div>
 
-    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
         <div class="form-group">
-            <button type="reset" class="btn btn-danger btn-xl" id="">Limpiar</button>
+            <button type="reset" class="btn btn-secondary btn-xl" id="">Limpiar</button>
         </div>
     </div>
 
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
             <button type="submit" class="btn btn-primary">Siguiente</button>
         </div>
 </div>
