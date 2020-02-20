@@ -17,14 +17,14 @@ class EmpleadoController extends Controller
         if ($request) {
             $query = trim($request->get('SearchText'));
 
-            $empleados = DB::table('empleados')
+            $empleados = DB::table('empleado')
                 ->where([
-                    ['id_empleado', 'LIKE', '%' . $query . '%']
+                    ['idEmpleado', 'LIKE', '%' . $query . '%']
                 ])
                 ->orWhere([
-                    ['nombre', 'LIKE', '%' . $query . '%']
+                    ['nombre_empleado', 'LIKE', '%' . $query . '%']
                 ])
-                ->orderBy('id_empleado', 'desc')
+                ->orderBy('idEmpleado', 'desc')
                 ->paginate(7);
 
             return view('empleado.index', compact('empleados', 'query'));
@@ -43,7 +43,7 @@ class EmpleadoController extends Controller
     {
         $empleados = new Empleado();
 
-        $empleados->id_empleado = $request->get('id_empleado');
+        $empleados->id_empleado = $request->get('idEmpleado');
         $empleados->nombre = $request->get('nombre');
         $empleados->apellido = $request->get('apellido');
         $empleados->tipo_documento = $request->get('tipo_documento');

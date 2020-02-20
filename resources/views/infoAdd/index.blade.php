@@ -13,22 +13,22 @@
     <div style="margin-bottom: 2%;">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="table-responsive">
-                    <table class="table table-striped table-bordered table-hover">
+                <div class="table">
+                    <table class="table table-striped table-bordered table-hover" data-tablesaw-mode="columntoggle">
                         <thead>
                         <tr>
-                            <th>Detalles Examen</th>
-                            <th>Lista Problemas</th>
-                            <th>Diagnostico Definitivo</th>
-                            <th>Ayudas Diagnostico</th>
-                            <th>Condicion Corporal</th>
-                            <th>Convivencia Con Otros Animales</th>
-                            <th>Enfermedades</th>
-                            <th>Temperamento</th>
-                            <th>Fecha Ultima Desparasitacion</th>
-                            <th>Frecuencia Baño</th>
-                            <th>Fecha ultima Vacuna</th>
-                            <th>Historia Clinica</th>
+                            <th data-tablesaw-sortable-col data-tablesaw-priority="1">Detalles Examen</th>
+                            <th data-tablesaw-sortable-col data-tablesaw-priority="2">Lista Problemas</th>
+                            <th data-tablesaw-sortable-col data-tablesaw-priority="3">Diagnostico Definitivo</th>
+                            <th data-tablesaw-sortable-col data-tablesaw-priority="4">Ayudas Diagnostico</th>
+                            <th data-tablesaw-sortable-col data-tablesaw-priority="5">Condicion Corporal</th>
+                            <th data-tablesaw-sortable-col data-tablesaw-priority="6">Convivencia Con Otros Animales</th>
+                            <th data-tablesaw-sortable-col data-tablesaw-priority="7">Enfermedades</th>
+                            <th data-tablesaw-sortable-col data-tablesaw-priority="0">Temperamento</th>
+                            <th data-tablesaw-sortable-col data-tablesaw-priority="0">Fecha Ultima Desparasitacion</th>
+                            <th data-tablesaw-sortable-col data-tablesaw-priority="0">Frecuencia Baño</th>
+                            <th data-tablesaw-sortable-col data-tablesaw-priority="0">Fecha ultima Vacuna</th>
+                            <th data-tablesaw-sortable-col data-tablesaw-priority="0">Historia Clinica</th>
 
                         </tr>
                         </thead>

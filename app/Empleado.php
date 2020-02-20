@@ -6,20 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Empleado extends Model
 {
-    protected $table = 'empleados';
+    protected $table = 'empleado';
     protected $primaryKey = 'id_empleado';
     protected $fillable =
         [
-          'nombre',
-          'apellido',
+          'nombre_empleado',
+          'apellido_empleado',
           'tipo_documento',
           'nro_documento',
+            'cargo',
           'telefono',
           'celular',
           'correo',
           'direccion',
-          'cargo',
-          'fecha_nacimiento'
+          'Horarios_Empleados_id_Horarios_Empleados'
         ];
 
     public $timestamps = false;

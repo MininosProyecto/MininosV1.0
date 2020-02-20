@@ -31,6 +31,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
 
 <script src={{asset('plugins/js/jquery-3.3.1.min.js')}}></script>
+<script src={{asset('plugins/js/tablesaw.jquery.js')}}></script>
 
 <!-- JQUERY STEP -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-steps/1.1.0/jquery.steps.js"></script>
@@ -40,5 +41,9 @@
 <script src={{asset('plugins/vendor/date-picker/js/datepicker.en.js')}}></script>
 
 <script src={{asset('plugins/js/main.js')}}></script>
+
+{{--table--}}
+<script src={{asset('plugins/js/tablesaw-init.js')}}></script>
+
 
 </html>

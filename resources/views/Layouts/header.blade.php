@@ -41,6 +41,7 @@
     </style>
     <!-- Custom styles for this template -->
     <link href="{{asset('css/StylesDash.css')}}" rel="stylesheet">
+    <link href="{{asset('css/tablesaw.css')}}" rel="stylesheet">
 
 </head>
 <body>
@@ -107,10 +108,16 @@
                                 <span data-feather="award"></span>
                                 Diagnostico
                             </a>
-                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{url('Mascota/tratamiento')}}">
                                 <span data-feather="gitlab"></span>
                                 Tratamiento
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+
+                            <a class="dropdown-item" href="{{url('infoAdd')}}">
+                                <span data-feather="award"></span>
+                                Info Adiccionar H-C
                             </a>
                         </div>
                     </li>
