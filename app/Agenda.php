@@ -11,8 +11,12 @@ class Agenda extends Model
 
     protected $fillable =
         [
+            'idAgenda',
             'fecha_agenda',
             'estado',
+            'descripcion',
+            'TextColor',
+            'Mascota_id_mascota',
             'Empleados_id_veterinario'
         ];
 

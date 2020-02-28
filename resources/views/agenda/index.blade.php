@@ -91,7 +91,7 @@
                 },
                 dateClick: function (info) {
 
-                    $('#txtFecha').val(info.dateStr);
+                    $('#fecha_agenda').val(info.dateStr);
 
                     $('#exampleModal').modal('toggle');
 
@@ -100,37 +100,37 @@
                 },
                 eventClick: function (info) {
 
-                    console.log(info.event);
-                    console.log(info.event.title);
-                    console.log(info.event.start);
+                    // console.log(info.event);
+                    // console.log(info.event.title);
+                    // console.log(info.event.start);
+                    //
+                    // console.log(info.event.end);
+                    // console.log(info.event.textColor);
+                    // console.log(info.event.backgroundColor);
+                    //
+                    // console.log(info.event.extendedProps.descripcion);
 
-                    console.log(info.event.end);
-                    console.log(info.event.textColor);
-                    console.log(info.event.backgroundColor);
+                    $('#txtTipoReserva').val(info.event.extendedProps.TipoReserva);
 
-                    console.log(info.event.extendedProps.descripcion);
-
-
-                    $('#txtId').val(info.event.id);
-                    $('#txtTitulo').val(info.event.title);
-
-                    mes = (info.event.start.getMonth() + 1);
-                    dia = (info.event.start.getDate());
-                    anio = (info.event.start.getFullYear());
-                    hora = (info.event.start.getHours() + ":" + info.event.start.getMinutes());
+                    mes = (info.event.extendedProps.fecha_agenda.getMonth() + 1);
+                    dia = (info.event.extendedProps.fecha_agenda.getDate());
+                    anio = (info.event.extendedProps.fecha_agenda.getFullYear());
+                    hora = (info.event.extendedProps.fecha_agenda.getHours() + ":" + info.event.extendedProps.fecha_agenda.getMinutes());
 
                     mes = (mes < 10) ? "0" + mes : mes;
                     dia = (dia < 10) ? "0" + dia : dia;
 
-                    $('#txtFecha').val(anio + "-" + mes + "-" + dia);
+                    $('#fecha_agenda').val(anio + "-" + mes + "-" + dia);
                     $('#txtHora').val(hora);
-                    $('#txtColor').val(info.event.backgroundColor);
+                    $('#idMascota').val(info.event.extendedProps.idMacota);
+                    $('#idEmpleado').val(info.event.extendedProps.idEmpleado);
                     $('#txtDescripcion').val(info.event.extendedProps.descripcion);
+                    $('#txtColor').val(info.event.backgroundColor);
 
                     $('#exampleModal').modal();
                 },
 
-                events: "{{url('agenda/Agenda/show')}}"
+                events: "{{url('agenda/show')}}"
 
             });
 
@@ -146,26 +146,25 @@
             $('#btnBorrar').click(function () {
                 objEvento = recolectarDatosGUI("DELETE");
 
-                enviarInformacion('/' + $('#txtId').val(), objEvento);
+                enviarInformacion('/' + $('#idAgenda').val(), objEvento);
             });
 
             $('#btnModificar').click(function () {
                 objEvento = recolectarDatosGUI("PATCH");
 
-                enviarInformacion('/' + $('#txtId').val(), objEvento);
+                enviarInformacion('/' + $('#idAgenda').val(), objEvento);
             });
 
             function recolectarDatosGUI(method) {
 
                 nuevoEvento =
                     {
-                        id: $('#txtId').val(),
-                        title: $('#txtTitulo').val(),
+                        TipoReserva: $('#txtTipoReserva').val(),
+                        fecha_agenda: $('#fecha_agenda').val() + " " + $('#txtHora').val(),
+                        idMacota: $('#idMascota').val(),
+                        idEmpleado: $('#idEmpleado').val(),
                         descripcion: $('#txtDescripcion').val(),
                         color: $('#txtColor').val(),
-                        TextColor: '#FFFFFFF',
-                        start: $('#txtFecha').val() + " " + $('#txtHora').val(),
-                        end: $('#txtFecha').val() + " " + $('#txtHora').val(),
                         '_token': $("meta[name='csrf-token']").attr("content"),
                         '_method': method
                     }
@@ -177,7 +176,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "{{url('eventos')}}" + accion,
+                    url: "{{url('agenda')}}" + accion,
                     data: objEvento,
                     success: function (msg) {
                         console.log(msg);
@@ -195,7 +194,7 @@
     </script>
 </head>
 <body>
-@include('agenda.Agenda.nav')
+@include('agenda.nav')
 <div class="container-fluid">
     <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
@@ -233,30 +232,11 @@
                         </div>
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('agenda')}}">
                             <span data-feather="calendar"></span>
                             Agenda
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{url('agenda/citaMedica')}}">
-                                <span data-feather="activity"></span>
-                                Citas Medicas
-                            </a>
-
-                            <a class="dropdown-item" href="{{url('agenda/Agenda')}}">
-                                <span data-feather="activity"></span>
-                                Agendar
-                            </a>
-
-                            <div class="dropdown-divider"></div>
-
-                            <a class="dropdown-item" href="{{url('infoAdd')}}">
-                                <span data-feather="award"></span>
-                                Reserva Spa
-                            </a>
-                        </div>
                     </li>
 
                     <li class="nav-item">
@@ -353,6 +333,9 @@
                                 <div class="container">
                                     <div class="row">
 
+                                        <input type="text" class="form-control" name="idAgenda" id="idAgenda"
+                                               hidden>
+
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Tipo Cita</label>
@@ -368,7 +351,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Fecha</label>
-                                                <input type="text" class="form-control" name="txtFecha" id="txtFecha"
+                                                <input type="text" class="form-control" name="fecha_agenda" id="fecha_agenda"
                                                        disabled>
                                             </div>
                                         </div>
@@ -383,11 +366,10 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Mascota</label>
-                                                <select class="form-control" name="txtTipoReserva" id="txtTipoReserva"
+                                                <select class="form-control" name="idMascota" id="idMascota"
                                                         required="required"
-                                                        data-validation-required-message="Seleccione una opcion" {{old('txtTipoReserva')}}>
+                                                        data-validation-required-message="Seleccione una opcion" {{old('idMascota')}}>
                                                     <option value="medica">Medica</option>
-                                                    <option value="reservaSpa">Reserva Spa</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -395,9 +377,9 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Empleado</label>
-                                                <select class="form-control" name="txtTipoReserva" id="txtTipoReserva"
+                                                <select class="form-control" name="idEmpleado" id="idEmpleado"
                                                         required="required"
-                                                        data-validation-required-message="Seleccione una opcion" {{old('txtTipoReserva')}}>
+                                                        data-validation-required-message="Seleccione una opcion" {{old('idEmpleado')}}>
                                                     <option value="medica">Medica</option>
                                                     <option value="reservaSpa">Reserva Spa</option>
                                                 </select>
@@ -427,7 +409,7 @@
                         </div>
                         <div class="modal-footer">
 
-                            <button id="btnAgregar" class="btn btn-success">Agregar</button>
+                            <button id="btnAgregar" type="submit" class="btn btn-success">Agregar</button>
                             <button id="btnModificar" class="btn btn-warning">Modificar</button>
                             <button id="btnBorrar" class="btn btn-danger">Borrar</button>
                             <button id="btnCancelar" class="btn btn-secondary">Cancelar</button>

@@ -31,7 +31,7 @@ class AgendaController extends Controller
 //
 //            return view('agenda.index',compact('agendas','query'));
 //        }
-        return view('agenda.Agenda.index');
+        return view('agenda.index');
     }
 
 
@@ -58,7 +58,7 @@ class AgendaController extends Controller
 //        $cita->save();
 //
 //        return Redirect::to('agenda/citaMedica/create');
-        $datosAgenda = $request->except(['_token', '_method']);
+        $datosAgenda = $request->except(['_method']);
         Agenda::insert($datosAgenda);
         print_r($datosAgenda);
     }
