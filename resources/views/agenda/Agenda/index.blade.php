@@ -11,7 +11,8 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/dashboard/">
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 
     <!-- DATE-PICKER -->
@@ -21,7 +22,8 @@
     <link rel="stylesheet" href={{asset('plugins/css/style.css')}}>
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
 
     <style>
         .bd-placeholder-img {
@@ -212,7 +214,8 @@
                         </a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span data-feather="github"></span>
                             Mascota
                         </a>
@@ -231,7 +234,8 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span data-feather="calendar"></span>
                             Agenda
                         </a>
@@ -263,7 +267,8 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span data-feather="bookmark"></span>
                             Info Mascota
                         </a>
@@ -347,26 +352,24 @@
                             <form action="">
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-md-6">
+
+                                        <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>id</label>
-                                                <input type="text" class="form-control" name="txtId" id="txtId">
+                                                <label>Tipo Cita</label>
+                                                <select class="form-control" name="txtTipoReserva" id="txtTipoReserva"
+                                                        required="required"
+                                                        data-validation-required-message="Seleccione una opcion" {{old('txtTipoReserva')}}>
+                                                    <option value="medica">Medica</option>
+                                                    <option value="reservaSpa">Reserva Spa</option>
+                                                </select>
                                             </div>
                                         </div>
-
 
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Fecha</label>
-                                                <input type="text" class="form-control" name="txtFecha" id="txtFecha" disabled>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Titulo</label>
-                                                <input type="text" class="form-control" name="txtTitulo" id="txtTitulo">
+                                                <input type="text" class="form-control" name="txtFecha" id="txtFecha"
+                                                       disabled>
                                             </div>
                                         </div>
 
@@ -376,6 +379,31 @@
                                                 <input type="text" class="form-control" name="txtHora" id="txtHora">
                                             </div>
                                         </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Mascota</label>
+                                                <select class="form-control" name="txtTipoReserva" id="txtTipoReserva"
+                                                        required="required"
+                                                        data-validation-required-message="Seleccione una opcion" {{old('txtTipoReserva')}}>
+                                                    <option value="medica">Medica</option>
+                                                    <option value="reservaSpa">Reserva Spa</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Empleado</label>
+                                                <select class="form-control" name="txtTipoReserva" id="txtTipoReserva"
+                                                        required="required"
+                                                        data-validation-required-message="Seleccione una opcion" {{old('txtTipoReserva')}}>
+                                                    <option value="medica">Medica</option>
+                                                    <option value="reservaSpa">Reserva Spa</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
 
                                         <div class="col-md-12">
                                             <div class="form-group">
@@ -402,7 +430,7 @@
                             <button id="btnAgregar" class="btn btn-success">Agregar</button>
                             <button id="btnModificar" class="btn btn-warning">Modificar</button>
                             <button id="btnBorrar" class="btn btn-danger">Borrar</button>
-                            <button id="btnCancelar" class="btn btn-default">Cancelar</button>
+                            <button id="btnCancelar" class="btn btn-secondary">Cancelar</button>
                         </div>
                     </div>
                 </div>
@@ -424,7 +452,8 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-<script src="{{asset('js/Dash.js')}}"></script></body>
+<script src="{{asset('js/Dash.js')}}"></script>
+</body>
 
 {{--bootstrap--}}
 
