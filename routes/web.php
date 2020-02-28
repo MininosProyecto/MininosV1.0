@@ -23,7 +23,7 @@ Route::resource('Mascota/raza', 'RazaController');
 
 Route::resource('Mascota/historiaClinica', 'HistoriaClinicaController');
 
-Route::resource('agenda/citaMedica', 'AgendaController');
+Route::resource('agenda/Agenda', 'AgendaController');
 
 Route::resource('empleado', 'EmpleadoController');
 

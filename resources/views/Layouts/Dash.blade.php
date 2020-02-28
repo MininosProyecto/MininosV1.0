@@ -5,13 +5,12 @@
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group mr-2">
                 @yield('Listar')
-                @yield('listar')
             </div>
         </div>
     </div>
 
-<div>
+
     @yield('Contenido')
-</div>
+
 
 @include('Layouts.footer')

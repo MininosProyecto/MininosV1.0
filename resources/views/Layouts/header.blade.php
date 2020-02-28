@@ -43,6 +43,9 @@
     <link href="{{asset('css/StylesDash.css')}}" rel="stylesheet">
     <link href="{{asset('css/tablesaw.css')}}" rel="stylesheet">
 
+{{--    Calendar--}}
+    @yield('links')
+
 </head>
 <body>
 
@@ -91,6 +94,11 @@
                             <a class="dropdown-item" href="{{url('agenda/citaMedica')}}">
                                 <span data-feather="activity"></span>
                                 Citas Medicas
+                            </a>
+
+                            <a class="dropdown-item" href="{{url('agenda/Agenda')}}">
+                                <span data-feather="activity"></span>
+                                Agendar
                             </a>
 
                             <div class="dropdown-divider"></div>

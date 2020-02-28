@@ -61,16 +61,6 @@
                 </div>
             </div>
 
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="form-group">
-                    <label>Fecha</label>
-                    <input type="date" class="form-control" name="fecha_agenda" placeholder="Fecha Agenda..."
-                           required="required"
-                           data-validation-required-message="Ingrese producto por favor" {{old('fecha_agenda')}}>
-                    <p class="help-block text-danger"></p>
-                </div>
-            </div>
-
             <hr width="1500" style="background: #99999961;">
 
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
