@@ -27,7 +27,7 @@ class EmpleadoController extends Controller
                 ->orderBy('idEmpleado', 'desc')
                 ->paginate(7);
 
-            return view('empleado.index', compact('empleados', 'query'));
+            return view('empleado.empleados.index', compact('empleados', 'query'));
         }
 
     }
@@ -35,7 +35,7 @@ class EmpleadoController extends Controller
 
     public function create()
     {
-        return view('empleado.create');
+        return view('empleado.empleados.create');
     }
 
 
@@ -43,9 +43,8 @@ class EmpleadoController extends Controller
     {
         $empleados = new Empleado();
 
-        $empleados->id_empleado = $request->get('idEmpleado');
-        $empleados->nombre = $request->get('nombre');
-        $empleados->apellido = $request->get('apellido');
+        $empleados->nombre_empleado = $request->get('nombre');
+        $empleados->apellido_empleado = $request->get('apellido');
         $empleados->tipo_documento = $request->get('tipo_documento');
         $empleados->nro_documento = $request->get('nro_documento');
         $empleados->telefono = $request->get('telefono');
@@ -53,11 +52,10 @@ class EmpleadoController extends Controller
         $empleados->correo = $request->get('correo');
         $empleados->direccion = $request->get('direccion');
         $empleados->cargo = $request->get('cargo');
-        $empleados->fecha_nacimiento = $request->get('fecha_nacimiento');
 
         $empleados->save();
 
-        return Redirect('empleado/create');
+        return Redirect('empleado/empleados/create');
     }
 
 

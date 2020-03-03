@@ -19,17 +19,8 @@
         {!! Form::open(array('url'=>'Mascota/historiaClinica', 'method'=>'POST', 'autocomplete'=>'off')) !!}
 
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <div class="form-group">
-                    <label>Id Historia Clinica</label>
-                    <input type="number" class="form-control" name="idHistoriaClinica" placeholder="Id Historia Clinica..."
-                           required="required"
-                           data-validation-required-message="Ingrese Id Historia Clinica por favor" {{old('idHistoriaClinica')}}>
-                    <p class="help-block text-danger"></p>
-                </div>
-            </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                 <div class="form-group">
                     <label>Mascota</label>
                     <select name="Mascotas_idMascotas" class="selectpicker form-control" data-live-search="true" data-size="5">

@@ -57,7 +57,6 @@ class MascotaController extends Controller
 
         $mascota = new Mascota();
 
-        $mascota->id_mascota = $request->get('id_mascota');
         $mascota->nombre_mascota = $request->get('nombre_mascota');
         $mascota->fecha_nacimiento = $request->get('fecha_nac');
         $mascota->Clientes_id_cliente = $request->get('Clientes_id_cliente');

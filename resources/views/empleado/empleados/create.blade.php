@@ -5,28 +5,18 @@
 @endsection
 
 @section('Listar')
-    <a href="{{url('/empleado')}}">
+    <a href="{{url('/empleado/empleados')}}">
         <button type="button" class="btn btn-sm btn-outline-secondary">Listar</button>
     </a>
 @endsection
 
 @section('Contenido')
 
-    @include('empleado.search')
+    @include('empleado.empleados.search')
     <div style="margin-bottom: -5%;">
 
-        {!! Form::open(array('url'=>'empleado', 'method'=>'POST', 'autocomplete'=>'off')) !!}
+        {!! Form::open(array('url'=>'empleado/empleados', 'method'=>'POST', 'autocomplete'=>'off')) !!}
         <div class="row">
-
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <div class="form-group">
-                    <label>Id Empleado</label>
-                    <input type="text" class="form-control" name="id_empleado" placeholder="Id Empleado..."
-                           required="required"
-                           data-validation-required-message="Ingrese Id por favor" {{old('id_empleado')}}>
-                    <p class="help-block text-danger"></p>
-                </div>
-            </div>
 
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                 <div class="form-group">
@@ -48,7 +38,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-group">
                     <label>Tipo Documento</label>
                     <select class="form-control" name="tipo_documento" required="required"
@@ -121,7 +111,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-group">
                     <label>Fecha de Nacimiento</label>
                     <input type="date" class="form-control" name="fecha_nacimiento"

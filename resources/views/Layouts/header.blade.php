@@ -57,7 +57,7 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="#">
                             <span data-feather="home"></span>
-                            Dashboard <span class="sr-only">(current)</span>
+                            Home <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -66,6 +66,7 @@
                             Clientes
                         </a>
                     </li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span data-feather="github"></span>
@@ -74,14 +75,20 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{url('Mascota/historiaClinica')}}">
                                 <span data-feather="activity"></span>
-                                Historia Clinica</a>
+                                Historia Clinica
+                            </a>
+
                             <a class="dropdown-item" href="{{url('Mascota/raza')}}">
                                 <span data-feather="award"></span>
-                                Raza</a>
+                                Raza
+                            </a>
+
                             <div class="dropdown-divider"></div>
+
                             <a class="dropdown-item" href="{{url('Mascota/mascota')}}">
                                 <span data-feather="gitlab"></span>
-                                Registro Mascotas</a>
+                                Registro Mascotas
+                            </a>
                         </div>
                     </li>
 
@@ -92,11 +99,25 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('empleado')}}">
-                            <span data-feather="bar-chart-2"></span>
-                            Empleado
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span data-feather="github"></span>
+                           Empleados
                         </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{url('empleado/empleados')}}">
+                                <span data-feather="activity"></span>
+                                Registro empleado
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+
+                            <a class="dropdown-item" href="{{url('empleado/horariosEmpleados')}}">
+                                <span data-feather="gitlab"></span>
+                                Horarios Empleados
+                            </a>
+
+                        </div>
                     </li>
 
                     <li class="nav-item dropdown">

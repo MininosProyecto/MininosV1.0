@@ -10,65 +10,67 @@ use Illuminate\Support\Facades\DB;
 class AgendaController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-//        if ($request)
-//        {
-//            $query = trim($request->get('searchText'));
-//
-//            $agendas = DB::table('agenda as ag')
-//                ->join('empleado as emp', 'idEmpleado', '=', 'Empleados_id_veterinario')
-//
-//                ->select('ag.idAgenda', 'ag.fecha_agenda', 'ag.estado' , 'ag.Empleados_id_veterinario')
-//                ->where([
-//                    ['ag.idAgenda', 'LIKE', '%'.$query.'%'],
-//                ])
-//                ->orWhere([
-//                    ['ag.Empleados_id_veterinario', 'LIKE', '%'.$query.'%']
-//                ])
-//                ->orderBy('ag.idAgenda', 'desc')
-//                ->paginate(7);
-//
-//            return view('agenda.index',compact('agendas','query'));
-//        }
-        return view('agenda.index');
+        if ($request)
+        {
+            $buscar = trim($request->get('searchText'));
+
+            $agendas = DB::table('agenda as ag')
+                ->join('empleado as emp', 'idEmpleado', '=', 'Empleados_id_veterinario')
+                ->join('mascota as mas', 'id_mascota', '=', 'Mascota_id_mascota')
+                ->join('tipocita as tc', 'id_tipoCita', '=', 'TipoCita_id_tipoCita')
+
+                ->select('ag.idAgenda', 'ag.fecha_agenda', 'ag.estado' , 'ag.Empleados_id_veterinario')
+
+                ->where([
+                    ['ag.idAgenda', 'LIKE', '%'.$buscar.'%'],
+                    ['tc.tipoCita', 'LIKE', '%'.$buscar.'%']
+                ])
+                ->orWhere([
+                    ['ag.Empleados_id_veterinario', 'LIKE', '%'.$buscar.'%'],
+                    ['mas.nombre']
+                ])
+
+                ->orderBy('ag.idAgenda', 'desc')
+                ->paginate(7);
+
+            return view('agenda.index',compact('agendas','buscar'));
+        }
     }
 
 
     public function create()
     {
-//        $empleados = DB::table('empleado')->select('idEmpleado' , 'nombre_empleado')->get();
-//
-//        return view('agenda.create', compact('empleados'));
+        $mascotas = DB::table('mascota')->select('id_mascota' , 'nombre_mascota')->get();
+        $empleados = DB::table('empleado')->select('idEmpleado' , 'nombre_empleado')->get();
+        $tipoCitas = DB::table('tipocita')->select('id_tipoCita' , 'tipoCita')->get();
+
+        return view('agenda.create', compact('empleados', 'mascotas'), compact('tipoCitas'));
     }
 
 
     public function store(Request $request)
     {
 
-//        $cita = new Alimentacion();
-//
-//        $cita->id_cita = $request->get('id_cita');
-//        $cita->fecha = $request->get('fecha');
-//        $cita->Mascota_id_mascota = $request->get('Mascota_id_mascota');
-//        $cita->Agenda_idAgenda = $request->get('Agenda_idAgenda');
-//
-//
-//
-//        $cita->save();
-//
-//        return Redirect::to('agenda/citaMedica/create');
-        $datosAgenda = $request->except(['_method']);
-        Agenda::insert($datosAgenda);
-        print_r($datosAgenda);
+        $cita = new Alimentacion();
+
+        $cita->id_cita = $request->get('id_cita');
+        $cita->fecha = $request->get('fecha');
+        $cita->Mascota_id_mascota = $request->get('Mascota_id_mascota');
+        $cita->Agenda_idAgenda = $request->get('Agenda_idAgenda');
+
+
+
+        $cita->save();
+
+        return Redirect::to('agenda/citaMedica/create');
     }
 
 
-    public function show()
+    public function show($id)
     {
-        $data['agenda'] = Agenda::all();
-
-        return response()->json($data['agenda']);
+        //
     }
 
 
@@ -80,17 +82,12 @@ class AgendaController extends Controller
 
     public function update(Request $request, $id)
     {
-        $datosAgenda = $request->except(['_token', '_method']);
-        $repuesta = Agenda::where('id', '=', $id)->update($datosAgenda);
 
-        return response()->json($repuesta);
     }
 
 
     public function destroy($id)
     {
-        $agendas = Agenda::findOrFail($id);
-        $agendas->destroy($id);
-        return response()->json($id);
+
     }
 }

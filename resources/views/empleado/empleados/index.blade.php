@@ -5,11 +5,11 @@
 @endsection
 
 @section('Listar')
-    <a href="{{url('/empleado/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Nuevo</button></a>
+    <a href="{{url('/empleado/empleados/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Nuevo</button></a>
 @endsection
 
 @section('Contenido')
-    @include('empleado.search')
+    @include('empleado.empleados.search')
 <div style="margin-bottom: 2%;">
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -25,25 +25,23 @@
                         <th>Correo</th>
                         <th>Direccion</th>
                         <th>Cargo</th>
-                        <th>Fecha Nacimiento</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($empleados ?? '' as $emp)
+                    @foreach($empleados as $emp)
                         <tr>
-                            <td>{{$emp->nombre}}</td>
-                            <td>{{$emp->apellido}}</td>
+                            <td>{{$emp->nombre_empleado}}</td>
+                            <td>{{$emp->apellido_empleado}}</td>
                             <td>{{$emp->nro_documento}}</td>
                             <td>{{$emp->telefono}}</td>
                             <td>{{$emp->celular}}</td>
                             <td>{{$emp->correo}}</td>
                             <td>{{$emp->direccion}}</td>
-                            <td>{{$emp->fecha_nacimiento}}</td>
                             <td>
-                                <a href="{{URL::action('EmpleadoController@edit', $emp->id_empleado)}}">
+                                <a href="{{URL::action('EmpleadoController@edit', $emp->idEmpleado)}}">
                                     <button class="bnt btn-info">Editar</button>
                                 </a>
-                                <a href="" data-target="#modal-delete-{{$emp->id_empleado}}" data-toggle="modal">
+                                <a href="" data-target="#modal-delete-{{$emp->idEmpleado}}" data-toggle="modal">
                                     <button class="bnt btn-danger">Eliminar</button>
                                 </a>
                             </td>

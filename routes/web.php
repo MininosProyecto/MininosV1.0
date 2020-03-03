@@ -25,7 +25,9 @@ Route::resource('Mascota/historiaClinica', 'HistoriaClinicaController');
 
 Route::resource('agenda', 'AgendaController');
 
-Route::resource('empleado', 'EmpleadoController');
+Route::resource('empleado/empleados', 'EmpleadoController');
+
+Route::resource('empleado/horariosEmpleados', 'HorarioEmpleadoController');
 
 Route::resource('vacunas', 'VacunaController');
 

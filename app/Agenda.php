@@ -15,7 +15,6 @@ class Agenda extends Model
             'fecha_agenda',
             'estado',
             'descripcion',
-            'TextColor',
             'Mascota_id_mascota',
             'Empleados_id_veterinario'
         ];
