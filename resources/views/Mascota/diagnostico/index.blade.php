@@ -17,7 +17,8 @@
                 <table class="table table-striped table-bordered table-hover">
                     <thead>
                     <tr>
-                        <th>Fecha Sintoma</th>
+                        <th>Nombre Mascota</th>
+                        <th>Fecha Diagnostico</th>
                         <th>Descripcion</th>
                         <th>Accion</th>
                     </tr>
@@ -25,6 +26,7 @@
                     <tbody>
                     @foreach($diagnosticos as $diag)
                         <tr>
+                            <td>{{$diag->nombre_mascota}}</td>
                             <td>{{$diag->fecha}}</td>
                             <td>{{$diag->descripcion}}</td>
                             <td>

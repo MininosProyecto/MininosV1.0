@@ -16,14 +16,20 @@ class SintomaController extends Controller
         {
             $query = trim($request->get('SearchText'));
 
-            $sintomas = DB::table('sintomas')
+            $sintomas = DB::table('sintomas as s')
+                ->join('historia_clinica as h', 'historiaClinica_id_historiaClinica', '=', 'idHistoriaClinica')
+                ->join('mascota as m', 'Mascotas_idMascotas', '=', 'id_mascota')
+                ->select('s.*', 'm.nombre_mascota')
+
                 ->where([
-                    ['idSintomas', 'LIKE', '%' . $query . '%']
+                    ['s.idSintomas', 'LIKE', '%' . $query . '%'],
+                    ['m.nombre_mascota', 'LIKE', '%'.$query.'%']
                 ])
                 ->orWhere([
-                    ['descripcion', 'LIKE', '%' . $query . '%']
+                    ['s.descripcion', 'LIKE', '%' . $query . '%']
                 ])
-                ->orderBy('idSintomas', 'desc')
+
+                ->orderBy('s.idSintomas', 'desc')
                 ->paginate(7);
 
             return view('Mascota.sintomas.index', compact('sintomas', 'query'));
@@ -33,7 +39,10 @@ class SintomaController extends Controller
 
     public function create()
     {
-        $historiaClinica = DB::table('historia_clinica')->select('idHistoriaClinica')->get();
+        $historiaClinica = DB::table('historia_clinica as h')
+            ->join('mascota as m', 'Mascotas_idMascotas', '=', 'id_mascota')
+            ->select('idHistoriaClinica', 'm.nombre_mascota')
+            ->get();
 
         return view('Mascota.sintomas.create', compact('historiaClinica'));
     }
@@ -43,9 +52,9 @@ class SintomaController extends Controller
     {
         $sintomas = new Sintoma();
 
-        $sintomas->fecha = $request->get('fecha');
         $sintomas->descripcion = $request->get('descripcion');
-        $sintomas->historiaClinica_id_historiaClinica = $request->get('historiaClinica_id_historiaClinica');
+        $sintomas->fecha = $request->get('fecha');
+        $sintomas->historiaClinica_id_historiaClinica = $request->get('idHistoria_Clinica');
 
         $sintomas->save();
 

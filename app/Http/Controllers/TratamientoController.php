@@ -16,14 +16,19 @@ class TratamientoController extends Controller
         {
             $query = trim($request->get('SearchText'));
 
-            $tratamientos = DB::table('tratamiento')
+            $tratamientos = DB::table('tratamiento as t')
+                ->join('historia_clinica as h', 'historiaClinica_id_historiaClinica', '=', 'idHistoriaClinica')
+                ->join('mascota as m', 'Mascotas_idMascotas', '=', 'id_mascota')
+                ->select('t.*', 'm.nombre_mascota')
+
                 ->where([
-                    ['idTratamiento', 'LIKE', '%' . $query . '%']
+                    ['t.idTratamiento', 'LIKE', '%' . $query . '%'],
+                    ['m.nombre_mascota', 'LIKE', '%' . $query . '%']
                 ])
                 ->orWhere([
-                    ['descripcion', 'LIKE', '%' . $query . '%']
+                    ['t.descripcion', 'LIKE', '%' . $query . '%']
                 ])
-                ->orderBy('idTratamiento', 'desc')
+                ->orderBy('t.idTratamiento', 'desc')
                 ->paginate(7);
 
             return view('Mascota.tratamiento.index', compact('tratamientos', 'query'));
@@ -33,7 +38,12 @@ class TratamientoController extends Controller
 
     public function create()
     {
-        return view('Mascota.tratamiento.create');
+        $historiaClinica = DB::table('historia_clinica as h')
+            ->join('mascota as m', 'Mascotas_idMascotas', '=', 'id_mascota')
+            ->select('idHistoriaClinica', 'm.nombre_mascota')
+            ->get();
+
+        return view('Mascota.tratamiento.create', compact('historiaClinica'));
     }
 
 
@@ -43,7 +53,7 @@ class TratamientoController extends Controller
 
         $clientes->fecha = $request->get('fecha');
         $clientes->descripcion = $request->get('descripcion');
-        $clientes->historiaClinica_id_historiaClinica = $request->get('historiaClinica_id_historiaClinica');
+        $clientes->historiaClinica_id_historiaClinica = $request->get('idHistoria_Clinica');
 
         $clientes->save();
 

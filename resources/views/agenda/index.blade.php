@@ -17,27 +17,27 @@
                     <table class="table table-striped table-bordered table-hover">
                         <thead>
                         <tr>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>Numero Documento</th>
-                            <th>Telefono</th>
-                            <th>Direccion</th>
+                            <th>Mascota</th>
+                            <th>Fecha y hora Agendada</th>
+                            <th>Descripcion</th>
+                            <th>Profecional</th>
+                            <th>Tipo Cita</th>
                             <th>Acciones</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($clientes ?? '' as $cli)
+                        @foreach($agendas as $ag)
                             <tr>
-                                <td>{{$cli->nombre_cliente}}</td>
-                                <td>{{$cli->apellido_cliente}}</td>
-                                <td>{{$cli->nro_documento}}</td>
-                                <td>{{$cli->telefono}}</td>
-                                <td>{{$cli->direccion}}</td>
+                                <td>{{$ag->nombre_mascota}}</td>
+                                <td>{{$ag->fecha_agenda}}</td>
+                                <td>{{$ag->descripcion}}</td>
+                                <td>{{$ag->nombre_empleado}}</td>
+                                <td>{{$ag->tipoCita}}</td>
                                 <td>
-                                    <a href="{{URL::action('ClienteController@edit', $cli->id_cliente)}}">
+                                    <a href="{{URL::action('ClienteController@edit', $ag->idAgenda)}}">
                                         <button class="bnt btn-info">Editar</button>
                                     </a>
-                                    <a href="" data-target="#modal-delete-{{$cli->id_cliente}}" data-toggle="modal">
+                                    <a href="" data-target="#modal-delete-{{$ag->idAgenda}}" data-toggle="modal">
                                         <button class="bnt btn-danger">Eliminar</button>
                                     </a>
                                 </td>
@@ -47,7 +47,7 @@
                         </tbody>
                     </table>
                 </div>
-                {{$clientes ?? ''->render()}}
+                {{$agendas->render()}}
             </div>
         </div>
     </div>

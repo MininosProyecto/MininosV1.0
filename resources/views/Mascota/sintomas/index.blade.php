@@ -17,6 +17,7 @@
                 <table class="table table-striped table-bordered table-hover">
                     <thead>
                     <tr>
+                        <th>Nombre Macota</th>
                         <th>Fecha Sintoma</th>
                         <th>Descripcion</th>
                         <th>Accion</th>
@@ -25,6 +26,7 @@
                     <tbody>
                     @foreach($sintomas as $sin)
                         <tr>
+                            <td>{{$sin->nombre_mascota}}</td>
                             <td>{{$sin->fecha}}</td>
                             <td>{{$sin->descripcion}}</td>
                             <td>

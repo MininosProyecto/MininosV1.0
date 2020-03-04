@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Agenda;
 use Illuminate\Http\Request;
+use Illuminate\Http\Request\AgendaRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class AgendaController extends Controller
 {
@@ -16,23 +18,23 @@ class AgendaController extends Controller
         {
             $buscar = trim($request->get('searchText'));
 
-            $agendas = DB::table('agenda as ag')
-                ->join('empleado as emp', 'idEmpleado', '=', 'Empleados_id_veterinario')
-                ->join('mascota as mas', 'id_mascota', '=', 'Mascota_id_mascota')
+            $agendas = DB::table('agenda as a')
+                ->join('empleado as e', 'idEmpleado', '=', 'Empleados_id_veterinario')
+                ->join('mascota as m', 'id_mascota', '=', 'Mascota_id_mascota')
                 ->join('tipocita as tc', 'id_tipoCita', '=', 'TipoCita_id_tipoCita')
 
-                ->select('ag.idAgenda', 'ag.fecha_agenda', 'ag.estado' , 'ag.Empleados_id_veterinario')
+                ->select('a.idAgenda', 'a.fecha_agenda', 'a.estado' , 'a.Empleados_id_veterinario', 'a.descripcion', 'm.nombre_mascota', 'e.nombre_empleado', 'tc.tipoCita')
 
                 ->where([
-                    ['ag.idAgenda', 'LIKE', '%'.$buscar.'%'],
+                    ['a.idAgenda', 'LIKE', '%'.$buscar.'%'],
                     ['tc.tipoCita', 'LIKE', '%'.$buscar.'%']
                 ])
                 ->orWhere([
-                    ['ag.Empleados_id_veterinario', 'LIKE', '%'.$buscar.'%'],
-                    ['mas.nombre']
+                    ['a.Empleados_id_veterinario', 'LIKE', '%'.$buscar.'%'],
+                    ['m.nombre_mascota', 'LIKE', '%'.$buscar.'%']
                 ])
 
-                ->orderBy('ag.idAgenda', 'desc')
+                ->orderBy('a.idAgenda', 'desc')
                 ->paginate(7);
 
             return view('agenda.index',compact('agendas','buscar'));
@@ -53,18 +55,18 @@ class AgendaController extends Controller
     public function store(Request $request)
     {
 
-        $cita = new Alimentacion();
+        $cita = new Agenda();
 
-        $cita->id_cita = $request->get('id_cita');
-        $cita->fecha = $request->get('fecha');
-        $cita->Mascota_id_mascota = $request->get('Mascota_id_mascota');
-        $cita->Agenda_idAgenda = $request->get('Agenda_idAgenda');
-
-
+        $cita->fecha_agenda = $request->get('Fecha');
+        $cita->estado = 'Activo';
+        $cita->descripcion = $request->get('Descripcion');
+        $cita->Mascota_id_mascota = $request->get('idMascota');
+        $cita->Empleados_id_veterinario = $request->get('idEmpleado');
+        $cita->TipoCita_id_tipoCita = $request->get('TipoCita');
 
         $cita->save();
 
-        return Redirect::to('agenda/citaMedica/create');
+        return Redirect::to('agenda/create');
     }
 
 

@@ -19,12 +19,12 @@
         <div class="row">
 
 
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <div class="form-group">
                     <label>Tipo Cita</label>
-                    <select class="form-control" name="TipoReserva" id="TipoReserva"
+                    <select class="form-control" name="TipoCita" id="TipoCita"
                             required="required"
-                            data-validation-required-message="Seleccione una opcion" {{old('TipoReserva')}}>
+                            data-validation-required-message="Seleccione una opcion" {{old('TipoCita')}}>
                         @foreach($tipoCitas as $tc)
                         <option value="{{$tc->id_tipoCita}}">{{$tc->tipoCita}}</option>
                         @endforeach
@@ -34,17 +34,18 @@
 
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>Fecha</label>
-                    <input type="date" class="form-control" name="Fecha" id="Fecha">
+                    <label>Fecha y hora</label>
+                    <input type="datetime-local" class="form-control" name="Fecha" id="Fecha">
+
                 </div>
             </div>
 
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Hora</label>
-                    <input type="text" class="form-control" name="Hora" id="Hora">
-                </div>
-            </div>
+{{--            <div class="col-md-6">--}}
+{{--                <div class="form-group">--}}
+{{--                    <label>Hora</label>--}}
+{{--                    <input type="text" class="form-control" name="Hora" id="Hora">--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
             <div class="col-md-12">
                 <div class="form-group">
@@ -61,12 +62,12 @@
 
             <div class="col-md-12">
                 <div class="form-group">
-                    <label>Empleado</label>
+                    <label>Profecional</label>
                     <select class="form-control" name="idEmpleado" id="idEmpleado"
                             required="required"
                             data-validation-required-message="Seleccione una opcion" {{old('idEmpleado')}}>
                         @foreach($empleados as $em)
-                        <option value="{{$em->idEmpelado}}">{{$em->nombre_empleado}}</option>
+                        <option value="{{$em->idEmpleado}}">{{$em->nombre_empleado}}</option>
                         @endforeach
                     </select>
                 </div>

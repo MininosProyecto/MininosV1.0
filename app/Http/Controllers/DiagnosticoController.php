@@ -16,14 +16,19 @@ class DiagnosticoController extends Controller
         {
             $query = trim($request->get('SearchText'));
 
-            $diagnosticos = DB::table('diagnostico')
+            $diagnosticos = DB::table('diagnostico as d')
+                ->join('historia_clinica as h', 'historiaClinica_id_historiaClinica', '=', 'idHistoriaClinica')
+                ->join('mascota as m', 'Mascotas_idMascotas', '=', 'id_mascota')
+                ->select('d.*', 'm.nombre_mascota')
+
                 ->where([
-                    ['idDiagnostico', 'LIKE', '%' . $query . '%']
+                    ['d.idDiagnostico', 'LIKE', '%' . $query . '%'],
+                    ['m.nombre_mascota', 'LIKE', '%' . $query . '%']
                 ])
                 ->orWhere([
-                    ['descripcion', 'LIKE', '%' . $query . '%']
+                    ['d.descripcion', 'LIKE', '%' . $query . '%']
                 ])
-                ->orderBy('idDiagnostico', 'desc')
+                ->orderBy('d.idDiagnostico', 'desc')
                 ->paginate(7);
 
             return view('Mascota.diagnostico.index', compact('diagnosticos', 'query'));
@@ -33,7 +38,10 @@ class DiagnosticoController extends Controller
 
     public function create()
     {
-        $historiaClinica = DB::table('historia_clinica')->select('idHistoriaClinica')->get();
+        $historiaClinica = DB::table('historia_clinica as h')
+            ->join('mascota as m', 'Mascotas_idMascotas', '=', 'id_mascota')
+            ->select('idHistoriaClinica', 'm.nombre_mascota')
+            ->get();
 
         return view('Mascota.diagnostico.create', compact('historiaClinica'));
     }
@@ -45,7 +53,7 @@ class DiagnosticoController extends Controller
 
         $diagnosticos->fecha = $request->get('fecha');
         $diagnosticos->descripcion = $request->get('descripcion');
-        $diagnosticos->historiaClinica_id_historiaClinica = $request->get('historiaClinica_id_historiaClinica');
+        $diagnosticos->historiaClinica_id_historiaClinica = $request->get('idHistoria_Clinica');
 
         $diagnosticos->save();
 

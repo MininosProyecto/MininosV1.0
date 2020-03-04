@@ -54,7 +54,6 @@ class HistoriaClinicaController extends Controller
         $historia_clinica->idHistoriaClinica = $request->get('idHistoriaClinica');
         $historia_clinica->Mascotas_idMascotas = $request->get('Mascotas_idMascotas');
 
-
         $historia_clinica->save();
 
         return Redirect::to('Mascota/historiaClinica/create');

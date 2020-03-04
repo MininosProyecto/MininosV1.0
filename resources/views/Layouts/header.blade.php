@@ -74,19 +74,19 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{url('Mascota/historiaClinica')}}">
-                                <span data-feather="activity"></span>
+                                <span data-feather="activity"></span> &nbsp
                                 Historia Clinica
                             </a>
 
                             <a class="dropdown-item" href="{{url('Mascota/raza')}}">
-                                <span data-feather="award"></span>
+                                <span data-feather="award"></span> &nbsp
                                 Raza
                             </a>
 
                             <div class="dropdown-divider"></div>
 
                             <a class="dropdown-item" href="{{url('Mascota/mascota')}}">
-                                <span data-feather="gitlab"></span>
+                                <span data-feather="plus-circle"></span> &nbsp
                                 Registro Mascotas
                             </a>
                         </div>
@@ -101,19 +101,19 @@
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span data-feather="github"></span>
+                            <span data-feather="users"></span>
                            Empleados
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{url('empleado/empleados')}}">
-                                <span data-feather="activity"></span>
+                                <span data-feather="plus-circle"></span> &nbsp
                                 Registro empleado
                             </a>
 
                             <div class="dropdown-divider"></div>
 
                             <a class="dropdown-item" href="{{url('empleado/horariosEmpleados')}}">
-                                <span data-feather="gitlab"></span>
+                                <span data-feather="clock"></span> &nbsp
                                 Horarios Empleados
                             </a>
 
@@ -122,27 +122,27 @@
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span data-feather="bookmark"></span>
+                            <span data-feather="info"></span>
                             Info Mascota
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{url('Mascota/sintomas')}}">
-                                <span data-feather="activity"></span>
+                                <span data-feather="alert-triangle"></span> &nbsp
                                 Sintomas
                             </a>
                             <a class="dropdown-item" href="{{url('Mascota/diagnostico')}}">
-                                <span data-feather="award"></span>
+                                <span data-feather="book"></span> &nbsp
                                 Diagnostico
                             </a>
                             <a class="dropdown-item" href="{{url('Mascota/tratamiento')}}">
-                                <span data-feather="gitlab"></span>
+                                <span data-feather="crop"></span> &nbsp
                                 Tratamiento
                             </a>
 
                             <div class="dropdown-divider"></div>
 
                             <a class="dropdown-item" href="{{url('infoAdd')}}">
-                                <span data-feather="award"></span>
+                                <span data-feather="folder-plus"></span> &nbsp
                                 Info Adiccionar H-C
                             </a>
                         </div>
