@@ -35,7 +35,13 @@ class ExamenFisicoController extends Controller
 
     public function create()
     {
-        return view('Mascota.ExamenFisico.create');
+        $historia = DB::table('historia_clinica as h')
+            ->join('mascota as m', 'Mascotas_idMascotas', '=', 'id_mascota')
+            ->select('idHistoriaClinica', 'm.nombre_mascota')
+            ->get();
+
+        return view('Mascota.ExamenFisico.create', compact('historia'));
+
     }
 
 

@@ -16,7 +16,7 @@ class ExamenFisico extends Model
             'TLLC',
             'Mem_Mucosa',
             'Pulso',
-            'Peso',
+            'Pulso',
             'S_Cardiovascular',
             'S_Respiratorio',
             'S_Nervioso',
