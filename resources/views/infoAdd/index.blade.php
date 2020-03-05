@@ -22,9 +22,9 @@
                             <th data-tablesaw-sortable-col data-tablesaw-priority="2">Lista Problemas</th>
                             <th data-tablesaw-sortable-col data-tablesaw-priority="3">Diagnostico Definitivo</th>
                             <th data-tablesaw-sortable-col data-tablesaw-priority="4">Ayudas Diagnostico</th>
-                            <th data-tablesaw-sortable-col data-tablesaw-priority="5">Condicion Corporal</th>
-                            <th data-tablesaw-sortable-col data-tablesaw-priority="6">Convivencia Con Otros Animales</th>
-                            <th data-tablesaw-sortable-col data-tablesaw-priority="7">Enfermedades</th>
+                            <th data-tablesaw-sortable-col data-tablesaw-priority="0">Condicion Corporal</th>
+                            <th data-tablesaw-sortable-col data-tablesaw-priority="0">Convivencia Con Otros Animales</th>
+                            <th data-tablesaw-sortable-col data-tablesaw-priority="0">Enfermedades</th>
                             <th data-tablesaw-sortable-col data-tablesaw-priority="0">Temperamento</th>
                             <th data-tablesaw-sortable-col data-tablesaw-priority="0">Fecha Ultima Desparasitacion</th>
                             <th data-tablesaw-sortable-col data-tablesaw-priority="0">Frecuencia Baño</th>
