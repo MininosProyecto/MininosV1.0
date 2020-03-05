@@ -31,6 +31,8 @@ Route::resource('Mascota/tratamiento', 'TratamientoController');
 
 Route::resource('Mascota/alimentacion', 'AlimentacionController');
 
+Route::resource('Mascota/notasProgreso', 'NotasProgresoController');
+
 Route::resource('agenda', 'AgendaController');
 
 Route::resource('empleado/empleados', 'EmpleadoController');

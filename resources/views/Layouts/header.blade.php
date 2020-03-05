@@ -151,7 +151,7 @@
                                 Tratamiento
                             </a>
 
-                            <a class="dropdown-item" href="{{url('Mascota/tratamiento')}}">
+                            <a class="dropdown-item" href="{{url('Mascota/notasProgreso')}}">
                                 <span data-feather="clipboard"></span> &nbsp
                                 Notas Progreso
                             </a>

@@ -1,16 +1,16 @@
 @extends('Layouts.Dash')
 
 @section('Cabecera')
-    Listado Alimentacion
+   Registro Notas Progreso
 @endsection
 
 @section('Listar')
-    <a href="{{url('Mascota/alimentacion')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Listar</button></a>
+    <a href="{{url('Mascota/notasProgreso')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Listar</button></a>
 @endsection
 
 @section('Contenido')
 
-    @include('Mascota.alimentacion.search')
+    @include('Mascota.notasProgreso.search')
     <div style="margin-bottom: 5%;">
         {!! Form::open(array('url'=>'Mascota/alimentacion', 'method'=>'POST', 'autocomplete'=>'off')) !!}
 
@@ -43,7 +43,7 @@
                     <label>Descripcion</label>
 
                     <textarea name="descripcion" class="form-control" required="required"
-                              data-validation-required-message="Ingrese una fecha por favor" {{old('fecha')}} cols="5" rows="10"></textarea>
+                              data-validation-required-message="Ingrese una fecha por favor" {{old('fecha')}} cols="5" rows="5"></textarea>
 
                     <p class="help-block text-danger"></p>
                 </div>

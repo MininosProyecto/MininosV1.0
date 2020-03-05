@@ -1,11 +1,11 @@
 @extends('Layouts.Dash')
 
 @section('Cabecera')
-    Listado Alimentacion
+    Notas Progreso
 @endsection
 
 @section('Listar')
-    <a href="{{url('/Mascota/alimentacion/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Nuevo</button></a>
+    <a href="{{url('/Mascota/notasProgreso/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Nuevo</button></a>
 @endsection
 
 @section('Contenido')
