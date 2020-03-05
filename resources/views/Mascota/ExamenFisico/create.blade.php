@@ -151,11 +151,82 @@
 
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-group">
-                    <label>ojo</label>
+                    <label>Ojo</label>
                     <input type="'text" class="form-control" name="Ojo"
                            required="required"
                            data-validation-required-message="Ingrese ojo por favor" {{old('Ojo')}}>
                     <p class="help-block text-danger"></p>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label>Oido</label>
+                    <input type="'text" class="form-control" name="Oido"
+                           required="required"
+                           data-validation-required-message="Ingrese oido por favor" {{old('Oido')}}>
+                    <p class="help-block text-danger"></p>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label>Sistema Tegumentario</label>
+                    <input type="'text" class="form-control" name="S_Tegumentario"
+                           required="required"
+                           data-validation-required-message="Ingrese sistema tegumentario por favor" {{old('S_Tegumentario')}}>
+                    <p class="help-block text-danger"></p>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label>Sistema Linfatico</label>
+                    <input type="'text" class="form-control" name="S_Linfatico"
+                           required="required"
+                           data-validation-required-message="Ingrese sistema linfatico por favor" {{old('S_Linfatico')}}>
+                    <p class="help-block text-danger"></p>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label>Actitud</label>
+                    <input type="'text" class="form-control" name="Actitud"
+                           required="required"
+                           data-validation-required-message="Ingrese actitud por favor" {{old('Actitud')}}>
+                    <p class="help-block text-danger"></p>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label>Hidratacion</label>
+                    <input type="'text" class="form-control" name="Hidratacion"
+                           required="required"
+                           data-validation-required-message="Ingrese Hidratacion por favor" {{old('Hidratacion')}}>
+                    <p class="help-block text-danger"></p>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label>Hidratacion</label>
+                    <input type="'text" class="form-control" name="Hidratacion"
+                           required="required"
+                           data-validation-required-message="Ingrese Hidratacion por favor" {{old('Hidratacion')}}>
+                    <p class="help-block text-danger"></p>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group">
+                    <label>Historia Clinica</label>
+                    <select name="Historia_Clinica_id_historia_clinica" class="selectpicker form-control" data-live-search="true">
+                        @foreach($historia as $h)
+                            <option value="{{$h->idHistoriaClinica}}">{{$cli->nombre_mascota}}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
 
