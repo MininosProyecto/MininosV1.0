@@ -5,11 +5,15 @@
 @endsection
 
 @section('Listar')
-    <a href="{{url('/Mascota/diagnostico/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Nuevo</button></a>
+    <a href="{{url('/Mascota/diagnostico/create')}}">
+        <button type="button" class="btn btn-sm btn-outline-secondary">Nuevo</button>
+    </a>
 @endsection
 
 @section('Contenido')
-@include('Mascota.diagnostico.search')
+    @include('Mascota.diagnostico.search')
+
+    @include('Mascota.diagnostico.search')
 
     <div class="row" style="margin-bottom: -9%;">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

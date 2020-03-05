@@ -4,13 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Alimentacion extends Model
+class NotasProgreso extends Model
 {
-    protected $table= 'alimentacion';
-    protected $primaryKey = 'idAlimentacion';
+    protected $table = 'notas progreso';
+    protected $primaryKey = 'idNotas_Progreso';
     protected $fillable =
         [
-            'producto',
+            'fecha',
+            'descripcion',
             'historiaClinica_id_historiaClinica'
         ];
 

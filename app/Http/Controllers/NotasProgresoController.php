@@ -2,32 +2,36 @@
 
 namespace App\Http\Controllers;
 
-use App\Alimentacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
+use App\NotasProgreso;
 
-class AlimentacionController extends Controller
+class NotasProgresoController extends Controller
 {
+
     public function index(Request $request)
     {
         if ($request)
         {
             $query = trim($request->get('searchText'));
 
-            $alimentos = DB::table('Alimentacion as a')
+            $alimentos = DB::table('notas progreso as n')
                 ->join('historia_clinica as h', 'historiaClinica_id_historiaClinica', '=', 'idHistoriaClinica')
                 ->join('mascota as m', 'Mascotas_idMascotas', '=', 'id_mascota')
-                ->select('a.*', 'm.nombre_mascota')
+                ->select('n.*', 'm.nombre_mascota')
 
                 ->where([
-                    ['a.producto', 'LIKE', '%'.$query.'%'],
+                    ['n.fecha', 'LIKE', '%'.$query.'%'],
                     ['m.nombre_mascota', 'LIKE', '%'.$query.'%']
                 ])
-                ->orderBy('a.idAlimentacion', 'desc')
+                ->orWhere([
+                    ['n.descripcion', 'LIKE', '%'.$query.'%']
+                ])
+                ->orderBy('m.idNotas_Progreso', 'desc')
                 ->paginate(7);
 
-            return view('Mascota.alimentacion.index',compact('alimentos','query'));
+            return view('Mascota.notasProgreso.index',compact('alimentos','query'));
         }
     }
 
@@ -39,21 +43,21 @@ class AlimentacionController extends Controller
             ->select('idHistoriaClinica', 'm.nombre_mascota')
             ->get();
 
-        return view('Mascota.alimentacion.create', compact('historia'));
+        return view('Mascota.notasProgreso.create', compact('historia'));
     }
 
 
     public function store(Request $request)
     {
+        $nota = new NotasProgreso();
 
-        $alimento = new Alimentacion();
+        $nota->fecha = $request->get('fecha');
+        $nota->descripcion = $request->get('descripcion');
+        $nota->historiaClinica_id_historiaClinica = $request->get('historia');
 
-        $alimento->producto = $request->get('producto');
-        $alimento->historiaClinica_id_historiaClinica = $request->get('historia');
+        $nota->save();
 
-        $alimento->save();
-
-        return Redirect::to('Mascota/alimentacion/create');
+        return Redirect::to('Mascota/notasProgreso/create');
     }
 
 
@@ -62,35 +66,20 @@ class AlimentacionController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
+
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         //

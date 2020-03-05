@@ -11,7 +11,8 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/dashboard/">
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 
     <!-- DATE-PICKER -->
@@ -21,7 +22,8 @@
     <link rel="stylesheet" href={{asset('plugins/css/style.css')}}>
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
 
     <style>
         .bd-placeholder-img {
@@ -43,7 +45,7 @@
     <link href="{{asset('css/StylesDash.css')}}" rel="stylesheet">
     <link href="{{asset('css/tablesaw.css')}}" rel="stylesheet">
 
-{{--    Calendar--}}
+    {{--    Calendar--}}
     @yield('links')
 
 </head>
@@ -68,7 +70,8 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span data-feather="github"></span>
                             Mascota
                         </a>
@@ -83,11 +86,16 @@
                                 Raza
                             </a>
 
+                            <a class="dropdown-item" href="{{url('Mascota/alimentacion')}}">
+                                <span data-feather="coffee"></span> &nbsp
+                                Alimentacion
+                            </a>
+
                             <div class="dropdown-divider"></div>
 
                             <a class="dropdown-item" href="{{url('Mascota/mascota')}}">
-                                <span data-feather="plus-circle"></span> &nbsp
-                                Registro Mascotas
+                                <span data-feather="align-left"></span> &nbsp
+                                Lista Mascotas
                             </a>
                         </div>
                     </li>
@@ -100,14 +108,15 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span data-feather="users"></span>
-                           Empleados
+                            Empleados
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{url('empleado/empleados')}}">
-                                <span data-feather="plus-circle"></span> &nbsp
-                                Registro empleado
+                                <span data-feather="align-left"></span> &nbsp
+                                Lista empleados
                             </a>
 
                             <div class="dropdown-divider"></div>
@@ -121,7 +130,8 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span data-feather="info"></span>
                             Info Mascota
                         </a>
@@ -130,13 +140,20 @@
                                 <span data-feather="alert-triangle"></span> &nbsp
                                 Sintomas
                             </a>
+
                             <a class="dropdown-item" href="{{url('Mascota/diagnostico')}}">
                                 <span data-feather="book"></span> &nbsp
                                 Diagnostico
                             </a>
+
                             <a class="dropdown-item" href="{{url('Mascota/tratamiento')}}">
                                 <span data-feather="crop"></span> &nbsp
                                 Tratamiento
+                            </a>
+
+                            <a class="dropdown-item" href="{{url('Mascota/tratamiento')}}">
+                                <span data-feather="clipboard"></span> &nbsp
+                                Notas Progreso
                             </a>
 
                             <div class="dropdown-divider"></div>
@@ -149,9 +166,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span data-feather="layers"></span>
-                        </a>
+
                     </li>
                 </ul>
 

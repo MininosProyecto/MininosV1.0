@@ -1,4 +1,4 @@
-{!! Form::open(array('url' => 'agenda/Agenda', 'method' => 'GET', 'autocomplete' => 'off', 'role' => 'search')) !!}
+{!! Form::open(array('url' => 'agenda', 'method' => 'GET', 'autocomplete' => 'off', 'role' => 'search')) !!}
 
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
 
@@ -7,7 +7,17 @@
     <ul class="navbar-nav px-3">
 
         <li class="nav-item text-nowrap">
-            <a class="nav-link" href="#">Sign out</a>
+            @if (Route::has('login'))
+                    @auth
+                        <a class="nav-link" href="{{ url('/home') }}">Home</a>
+                    @else
+                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+
+                        @if (Route::has('register'))
+                            <a class="nav-link" href="{{ route('register') }}">Register</a>
+                        @endif
+                    @endauth
+            @endif
         </li>
 
     </ul>

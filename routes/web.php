@@ -23,6 +23,14 @@ Route::resource('Mascota/raza', 'RazaController');
 
 Route::resource('Mascota/historiaClinica', 'HistoriaClinicaController');
 
+Route::resource('Mascota/diagnostico', 'DiagnosticoController');
+
+Route::resource('Mascota/sintomas', 'SintomaController');
+
+Route::resource('Mascota/tratamiento', 'TratamientoController');
+
+Route::resource('Mascota/alimentacion', 'AlimentacionController');
+
 Route::resource('agenda', 'AgendaController');
 
 Route::resource('empleado/empleados', 'EmpleadoController');
@@ -32,13 +40,5 @@ Route::resource('empleado/horariosEmpleados', 'HorarioEmpleadoController');
 Route::resource('vacunas', 'VacunaController');
 
 Route::resource('agenda/citaMedica', 'CitaMedicaController');
-
-Route::resource('alimentacion', 'AlimentacionController');
-
-Route::resource('Mascota/diagnostico', 'DiagnosticoController');
-
-Route::resource('Mascota/sintomas', 'SintomaController');
-
-Route::resource('Mascota/tratamiento', 'TratamientoController');
 
 Route::resource('infoAdd', 'InfoAdicionalController');
