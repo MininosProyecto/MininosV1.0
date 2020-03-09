@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\DB;
 
 class EmpleadoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index(Request $request)
     {

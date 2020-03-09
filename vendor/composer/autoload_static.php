@@ -101,6 +101,7 @@ class ComposerStaticInita9ccbbfe21911351df022017b93b6416
         array (
             'League\\Flysystem\\' => 17,
             'League\\CommonMark\\' => 18,
+            'Laravel\\Ui\\' => 11,
             'Laravel\\Tinker\\' => 15,
         ),
         'J' => 
@@ -311,6 +312,10 @@ class ComposerStaticInita9ccbbfe21911351df022017b93b6416
         array (
             0 => __DIR__ . '/..' . '/league/commonmark/src',
         ),
+        'Laravel\\Ui\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravel/ui/src',
+        ),
         'Laravel\\Tinker\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
@@ -418,9 +423,8 @@ class ComposerStaticInita9ccbbfe21911351df022017b93b6416
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Diagnostico' => __DIR__ . '/../..' . '/app/Diagnostico.php',
         'App\\Empleado' => __DIR__ . '/../..' . '/app/Empleado.php',
-        'App\\Especie' => __DIR__ . '/../..' . '/app/Especie.php',
+        'App\\ExamenFisico' => __DIR__ . '/../..' . '/app/ExamenFisico.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
-        'App\\Genero' => __DIR__ . '/../..' . '/app/Genero.php',
         'App\\HistoriaClinica' => __DIR__ . '/../..' . '/app/HistoriaClinica.php',
         'App\\HorarioEmpleado' => __DIR__ . '/../..' . '/app/HorarioEmpleado.php',
         'App\\Http\\Controllers\\AgendaController' => __DIR__ . '/../..' . '/app/Http/Controllers/AgendaController.php',
@@ -437,10 +441,12 @@ class ComposerStaticInita9ccbbfe21911351df022017b93b6416
         'App\\Http\\Controllers\\DiagnosticoController' => __DIR__ . '/../..' . '/app/Http/Controllers/DiagnosticoController.php',
         'App\\Http\\Controllers\\EmpleadoController' => __DIR__ . '/../..' . '/app/Http/Controllers/EmpleadoController.php',
         'App\\Http\\Controllers\\EspecieController' => __DIR__ . '/../..' . '/app/Http/Controllers/EspecieController.php',
+        'App\\Http\\Controllers\\ExamenFisicoController' => __DIR__ . '/../..' . '/app/Http/Controllers/ExamenFisicoController.php',
         'App\\Http\\Controllers\\HistoriaClinicaController' => __DIR__ . '/../..' . '/app/Http/Controllers/HistoriaClinicaController.php',
         'App\\Http\\Controllers\\HorarioEmpleadoController' => __DIR__ . '/../..' . '/app/Http/Controllers/HorarioEmpleadoController.php',
         'App\\Http\\Controllers\\InfoAdicionalController' => __DIR__ . '/../..' . '/app/Http/Controllers/InfoAdicionalController.php',
         'App\\Http\\Controllers\\MascotaController' => __DIR__ . '/../..' . '/app/Http/Controllers/MascotaController.php',
+        'App\\Http\\Controllers\\NotasProgresoController' => __DIR__ . '/../..' . '/app/Http/Controllers/NotasProgresoController.php',
         'App\\Http\\Controllers\\RazaController' => __DIR__ . '/../..' . '/app/Http/Controllers/RazaController.php',
         'App\\Http\\Controllers\\SintomaController' => __DIR__ . '/../..' . '/app/Http/Controllers/SintomaController.php',
         'App\\Http\\Controllers\\TratamientoController' => __DIR__ . '/../..' . '/app/Http/Controllers/TratamientoController.php',
@@ -453,9 +459,9 @@ class ComposerStaticInita9ccbbfe21911351df022017b93b6416
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
-        'App\\Http\\Requests\\ClienteRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ClienteRequest.php',
         'App\\InfoAdicional' => __DIR__ . '/../..' . '/app/InfoAdicional.php',
         'App\\Mascota' => __DIR__ . '/../..' . '/app/Mascota.php',
+        'App\\NotasProgreso' => __DIR__ . '/../..' . '/app/NotasProgreso.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -2145,6 +2151,13 @@ class ComposerStaticInita9ccbbfe21911351df022017b93b6416
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',
         'Laravel\\Tinker\\TinkerServiceProvider' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerServiceProvider.php',
+        'Laravel\\Ui\\AuthCommand' => __DIR__ . '/..' . '/laravel/ui/src/AuthCommand.php',
+        'Laravel\\Ui\\Presets\\Bootstrap' => __DIR__ . '/..' . '/laravel/ui/src/Presets/Bootstrap.php',
+        'Laravel\\Ui\\Presets\\Preset' => __DIR__ . '/..' . '/laravel/ui/src/Presets/Preset.php',
+        'Laravel\\Ui\\Presets\\React' => __DIR__ . '/..' . '/laravel/ui/src/Presets/React.php',
+        'Laravel\\Ui\\Presets\\Vue' => __DIR__ . '/..' . '/laravel/ui/src/Presets/Vue.php',
+        'Laravel\\Ui\\UiCommand' => __DIR__ . '/..' . '/laravel/ui/src/UiCommand.php',
+        'Laravel\\Ui\\UiServiceProvider' => __DIR__ . '/..' . '/laravel/ui/src/UiServiceProvider.php',
         'League\\CommonMark\\Block\\Element\\AbstractBlock' => __DIR__ . '/..' . '/league/commonmark/src/Block/Element/AbstractBlock.php',
         'League\\CommonMark\\Block\\Element\\AbstractStringContainerBlock' => __DIR__ . '/..' . '/league/commonmark/src/Block/Element/AbstractStringContainerBlock.php',
         'League\\CommonMark\\Block\\Element\\BlockQuote' => __DIR__ . '/..' . '/league/commonmark/src/Block/Element/BlockQuote.php',

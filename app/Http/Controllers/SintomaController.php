@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\DB;
 
 class SintomaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index(Request $request)
     {

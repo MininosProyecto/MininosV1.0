@@ -44,3 +44,7 @@ Route::resource('vacunas', 'VacunaController');
 Route::resource('agenda/citaMedica', 'CitaMedicaController');
 
 Route::resource('infoAdd', 'InfoAdicionalController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

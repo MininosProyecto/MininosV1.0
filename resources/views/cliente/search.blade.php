@@ -6,13 +6,20 @@
 
     <input class="form-control form-control-dark w-100" type="text" placeholder="Buscar" name="searchText" value="{{$query ?? ''}}" aria-label="Search">
 
-    <ul class="navbar-nav px-3">
+    <button type="submit" class="btn btn-default" style="color: #9c9c9c"> <a class="nav-link" type="submit">Buscar</a></button>
 
-        <li class="nav-item text-nowrap">
-            <a class="nav-link" href="#">Sign out</a>
-        </li>
+    @if (Route::has('login'))
+        @auth
+            <a class="nav-link" href="{{ url('/home') }}">Home</a>
+        @else
+            <a class="nav-link" href="{{ route('login') }}">Login</a>
 
-    </ul>
+            @if (Route::has('register'))
+                {{--                            <a class="nav-link" href="{{ route('register') }}">Register</a>--}}
+            @endif
+        @endauth
+    @endif
+
 </nav>
 
 {!! Form::close() !!}

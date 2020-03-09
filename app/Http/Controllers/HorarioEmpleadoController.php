@@ -9,6 +9,10 @@ use App\HorarioEmpleado;
 
 class HorarioEmpleadoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index(Request $request)
     {
