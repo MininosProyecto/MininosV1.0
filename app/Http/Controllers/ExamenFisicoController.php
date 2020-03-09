@@ -32,7 +32,7 @@ class ExamenFisicoController extends Controller
                 ->orderBy('ex.idExamen_Fisico', 'desc')
                 ->paginate(7);
 
-            return view('Mascota.ExamenFisico',compact('info','query'));
+            return view('Mascota.ExamenFisico',compact('examen','query'));
         }
     }
 
