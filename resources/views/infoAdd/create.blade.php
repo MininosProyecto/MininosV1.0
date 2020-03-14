@@ -10,7 +10,6 @@
 
 @section('Contenido')
 
-    @include('infoAdd.search')
 
     <div style="margin-bottom: -40%;">
 

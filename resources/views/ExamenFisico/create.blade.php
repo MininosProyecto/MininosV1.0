@@ -13,7 +13,6 @@
 
 @section('Contenido')
 
-    @include('Mascota.ExamenFisico.search')
     <div style="margin-bottom: 5%;">
         {!! Form::open(array('url'=>'Mascota/ExamenFisico', 'method'=>'POST', 'autocomplete'=>'off')) !!}
         <div class="row">

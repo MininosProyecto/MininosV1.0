@@ -12,7 +12,6 @@
 
 @section('Contenido')
 
-    @include('empleado.horariosEmpleados.search')
     <div style="margin-bottom: -5%;">
 
         {!! Form::open(array('url'=>'empleado/horariosEmpleados', 'method'=>'POST', 'autocomplete'=>'off')) !!}

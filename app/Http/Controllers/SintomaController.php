@@ -18,7 +18,7 @@ class SintomaController extends Controller
     {
         if ($request)
         {
-            $query = trim($request->get('SearchText'));
+            $buscar = trim($request->get('BuscarTexto'));
 
             $sintomas = DB::table('sintomas as s')
                 ->join('historia_clinica as h', 'historiaClinica_id_historiaClinica', '=', 'idHistoriaClinica')
@@ -26,17 +26,17 @@ class SintomaController extends Controller
                 ->select('s.*', 'm.nombre_mascota')
 
                 ->where([
-                    ['s.idSintomas', 'LIKE', '%' . $query . '%'],
-                    ['m.nombre_mascota', 'LIKE', '%'.$query.'%']
+                    ['s.idSintomas', 'LIKE', '%' . $buscar . '%'],
+                    ['m.nombre_mascota', 'LIKE', '%'.$buscar.'%']
                 ])
                 ->orWhere([
-                    ['s.descripcion', 'LIKE', '%' . $query . '%']
+                    ['s.descripcion', 'LIKE', '%' . $buscar . '%']
                 ])
 
                 ->orderBy('s.idSintomas', 'desc')
                 ->paginate(7);
 
-            return view('Mascota.sintomas.index', compact('sintomas', 'query'));
+            return view('Mascota.sintomas.index', compact('sintomas', 'buscar'));
         }
     }
 

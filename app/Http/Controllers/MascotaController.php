@@ -19,7 +19,7 @@ class MascotaController extends Controller
     {
         if ($request)
         {
-            $query = trim($request->get('searchText'));
+            $buscar = trim($request->get('BuscarTexto'));
 
             $mascotas = DB::table('mascota as m')
                 ->join('clientes as c', 'id_cliente', '=', 'Clientes_id_cliente')
@@ -28,16 +28,16 @@ class MascotaController extends Controller
                 ->join('genero as g', 'id_sexo', '=', 'Sexo_id_sexo')
                 ->select('m.id_mascota', 'm.nombre_mascota', 'm.fecha_nacimiento' ,'c.nombre_cliente as Dueño', 'e.descripcion as Especie', 'r.descripcion as Raza', 'g.descripcion as Sexo')
                 ->where([
-                    ['m.id_mascota', 'LIKE', '%'.$query.'%'],
-                    ['m.nombre_mascota', 'LIKE', '%'.$query.'%']
+                    ['m.id_mascota', 'LIKE', '%'.$buscar.'%'],
+                    ['m.nombre_mascota', 'LIKE', '%'.$buscar.'%']
                 ])
                  ->orWhere([
-                     ['c.nombre_cliente', 'LIKE', '%'.$query.'%']
+                     ['c.nombre_cliente', 'LIKE', '%'.$buscar.'%']
                  ])
                 ->orderBy('m.id_mascota', 'desc')
                 ->paginate(7);
 
-            return view('Mascota.mascota.index',compact('mascotas','query'));
+            return view('Mascota.mascota.index',compact('mascotas','buscar'));
         }
     }
 

@@ -15,7 +15,6 @@
     <!-- form registro cliente -->
 
     <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
-    @include('Mascota.mascota.search')
     <div style="margin-bottom: 25%;">
         {!! Form::open(array('url'=>'Mascota/raza', 'method'=>'POST', 'autocomplete'=>'off')) !!}
 

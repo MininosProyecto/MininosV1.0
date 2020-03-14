@@ -18,21 +18,21 @@ class InfoAdicionalController extends Controller
     {
         if ($request)
         {
-            $query = trim($request->get('searchText'));
+            $buscar = trim($request->get('BuscarTexto'));
 
             $info= DB::table('info_adicional_historiaclinica as inf')
                 ->join('historia_clinica as h', 'historiaClinica_id_historiaClinica', '=', 'idHistoriaClinica')
                 ->select('*')
                 ->where([
-                    ['inf.idInfoAdd', 'LIKE', '%'.$query.'%']
+                    ['inf.idInfoAdd', 'LIKE', '%'.$buscar.'%']
                 ])
                 ->orWhere([
-                    ['inf.historiaClinica_id_historiaClinica', 'LIKE', '%'.$query.'%']
+                    ['inf.historiaClinica_id_historiaClinica', 'LIKE', '%'.$buscar.'%']
                 ])
                 ->orderBy('inf.idInfoAdd', 'desc')
                 ->paginate(7);
 
-            return view('infoAdd.index',compact('info','query'));
+            return view('infoAdd.index',compact('info','buscar'));
         }
     }
 

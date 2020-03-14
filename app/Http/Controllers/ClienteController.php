@@ -17,19 +17,19 @@
         public function index(Request $request)
         {
             if ($request) {
-                $query = trim($request->get('SearchText'));
+                $buscar = trim($request->get('BuscarTexto'));
 
                 $clientes = DB::table('clientes')
                     ->where([
-                        ['id_cliente', 'LIKE', '%' . $query . '%']
+                        ['id_cliente', 'LIKE', '%' . $buscar . '%']
                     ])
                     ->orWhere([
-                        ['nombre_cliente', 'LIKE', '%' . $query . '%']
+                        ['nombre_cliente', 'LIKE', '%' . $buscar . '%']
                     ])
                     ->orderBy('id_cliente', 'desc')
                     ->paginate(7);
 
-                return view('cliente.index', compact('clientes', 'query'));
+                return view('cliente.index', compact('clientes', 'buscar'));
             }
 
         }

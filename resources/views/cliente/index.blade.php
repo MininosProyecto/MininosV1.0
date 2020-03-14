@@ -9,8 +9,9 @@
 @endsection
 
 @section('Contenido')
-    @include('cliente.search')
+
 <div style="margin-bottom: 2%;">
+    @include('cliente.search')
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="table-responsive">

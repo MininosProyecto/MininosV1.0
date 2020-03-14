@@ -10,7 +10,6 @@
 
 @section('Contenido')
 
-    @include('cliente.search')
 <div style="margin-bottom: -5%;">
 
     {!! Form::open(array('url'=>'cliente', 'method'=>'POST', 'autocomplete'=>'off')) !!}

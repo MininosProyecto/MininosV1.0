@@ -18,7 +18,7 @@ class AlimentacionController extends Controller
     {
         if ($request)
         {
-            $query = trim($request->get('searchText'));
+            $buscar = trim($request->get('BuscarTexto'));
 
             $alimentos = DB::table('Alimentacion as a')
                 ->join('historia_clinica as h', 'historiaClinica_id_historiaClinica', '=', 'idHistoriaClinica')
@@ -26,13 +26,13 @@ class AlimentacionController extends Controller
                 ->select('a.*', 'm.nombre_mascota')
 
                 ->where([
-                    ['a.producto', 'LIKE', '%'.$query.'%'],
-                    ['m.nombre_mascota', 'LIKE', '%'.$query.'%']
+                    ['a.producto', 'LIKE', '%'.$buscar.'%'],
+                    ['m.nombre_mascota', 'LIKE', '%'.$buscar.'%']
                 ])
                 ->orderBy('a.idAlimentacion', 'desc')
                 ->paginate(7);
 
-            return view('Mascota.alimentacion.index',compact('alimentos','query'));
+            return view('Mascota.alimentacion.index',compact('alimentos','buscar'));
         }
     }
 

@@ -18,7 +18,7 @@ class DiagnosticoController extends Controller
     {
         if ($request)
         {
-            $query = trim($request->get('SearchText'));
+            $buscar = trim($request->get('BuscarTexto'));
 
             $diagnosticos = DB::table('diagnostico as d')
                 ->join('historia_clinica as h', 'historiaClinica_id_historiaClinica', '=', 'idHistoriaClinica')
@@ -26,16 +26,16 @@ class DiagnosticoController extends Controller
                 ->select('d.*', 'm.nombre_mascota')
 
                 ->where([
-                    ['d.idDiagnostico', 'LIKE', '%' . $query . '%'],
-                    ['m.nombre_mascota', 'LIKE', '%' . $query . '%']
+                    ['d.idDiagnostico', 'LIKE', '%' . $buscar . '%'],
+                    ['m.nombre_mascota', 'LIKE', '%' . $buscar . '%']
                 ])
                 ->orWhere([
-                    ['d.descripcion', 'LIKE', '%' . $query . '%']
+                    ['d.descripcion', 'LIKE', '%' . $buscar . '%']
                 ])
                 ->orderBy('d.idDiagnostico', 'desc')
                 ->paginate(7);
 
-            return view('Mascota.diagnostico.index', compact('diagnosticos', 'query'));
+            return view('Mascota.diagnostico.index', compact('diagnosticos', 'buscar'));
         }
     }
 
