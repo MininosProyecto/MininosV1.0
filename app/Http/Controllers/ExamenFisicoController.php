@@ -21,25 +21,27 @@ class ExamenFisicoController extends Controller
             $query = trim($request->get('searchText'));
 
             $examen= DB::table('examen_fisico as ex')
-                ->join('historia_clinica as h', 'Historia_Clinica_id_historia_clinica', '=', 'idHistoriaClinica')
+                ->join('historia_clinica as h', 'historiaClinica_id_historiaClinica', '=', 'idHistoriaClinica')
                 ->select('*')
                 ->where([
-                    ['ex.idExamen_Fisico', 'LIKE', '%'.$query.'%']
+                    ['ex.idExamenFisico', 'LIKE', '%'.$query.'%']
                 ])
                 ->orWhere([
-                    ['h.Historia_Clinica_id_historia_clinica', 'LIKE', '%'.$query.'%']
+                    ['ex.historiaClinica_id_historiaClinica', 'LIKE', '%'.$query.'%']
                 ])
-                ->orderBy('ex.idExamen_Fisico', 'desc')
+                ->orderBy('ex.idExamenFisico', 'desc')
                 ->paginate(7);
 
-            return view('Mascota.ExamenFisico',compact('examen','query'));
+            return view('ExamenFisico.index',compact('examen','query'));
         }
     }
 
 
     public function create()
     {
-        return view('Mascota.ExamenFisico.create');
+        $historiaC = DB::table('historia_clinica')->select('Mascotas_idMascotas' , 'idHistoriaClinica')->get();
+
+        return view('ExamenFisico.create' , compact('historiaC'));
     }
 
 

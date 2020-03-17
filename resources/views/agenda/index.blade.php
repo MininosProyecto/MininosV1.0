@@ -20,7 +20,7 @@
                             <th>Mascota</th>
                             <th>Fecha y hora Agendada</th>
                             <th>Descripcion</th>
-                            <th>Profecional</th>
+                            <th>Profesional</th>
                             <th>Tipo Cita</th>
                             <th>Acciones</th>
                         </tr>
@@ -35,10 +35,10 @@
                                 <td>{{$ag->tipoCita}}</td>
                                 <td>
                                     <a href="{{URL::action('ClienteController@edit', $ag->idAgenda)}}">
-                                        <button class="bnt btn-info">Editar</button>
+                                        <button class="bnt btn-info"><span data-feather="edit"> </span></button>
                                     </a>
                                     <a href="" data-target="#modal-delete-{{$ag->idAgenda}}" data-toggle="modal">
-                                        <button class="bnt btn-danger">Eliminar</button>
+                                        <button class="bnt btn-danger"><span data-feather="trash-2"> </span></button>
                                     </a>
                                 </td>
                             </tr>

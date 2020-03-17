@@ -31,10 +31,10 @@
                             <td>{{$tra->descripcion}}</td>
                             <td>
                                 <a href="{{URL::action('TratamientoController@edit', $tra->idTratamiento)}}">
-                                    <button class="bnt btn-info">Editar</button>
+                                    <button class="bnt btn-info"><span data-feather="edit"> </span></button>
                                 </a>
                                 <a href="" data-target="#modal-delete-{{$tra->idTratamiento}}" data-toggle="modal">
-                                    <button class="bnt btn-danger">Eliminar</button>
+                                    <button class="bnt btn-danger"><span data-feather="trash-2"> </span></button>
                                 </a>
                             </td>
                         </tr>

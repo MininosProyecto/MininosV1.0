@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 Route::resource('cliente', 'ClienteController');
@@ -44,6 +44,8 @@ Route::resource('vacunas', 'VacunaController');
 Route::resource('agenda/citaMedica', 'CitaMedicaController');
 
 Route::resource('infoAdd', 'InfoAdicionalController');
+
+Route::resource('ExamenFisico', 'ExamenFisicoController');
 
 Auth::routes();
 
