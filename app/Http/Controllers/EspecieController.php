@@ -18,18 +18,18 @@ class EspecieController extends Controller
     {
         if ($request)
         {
-            $query = trim($request->get('SearchText'));
+            $buscar = trim($request->get('BuscarTexto'));
             $especies = DB::table('especie')
                 ->where([
-                    ['id_especie', 'LIKE', '%' . $query . '%']
+                    ['id_especie', 'LIKE', '%' . $buscar . '%']
                 ])
                 ->orWhere([
-                    ['descripcion', 'LIKE', '%' . $query . '%']
+                    ['descripcion', 'LIKE', '%' . $buscar . '%']
                 ])
                 ->orderBy('id_especie', 'desc')
                 ->paginate(7);
 
-            return view('Mascota.especie.index', compact("especies",'query'));
+            return view('Mascota.especie.index', compact("especies",'buscar'));
         }
     }
 

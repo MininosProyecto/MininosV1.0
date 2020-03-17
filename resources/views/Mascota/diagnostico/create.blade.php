@@ -12,7 +12,6 @@
 
 @section('Contenido')
 
-    @include('Mascota.diagnostico.search')
     <div style="margin-bottom: 10%;">
         {!! Form::open(array('url'=>'Mascota/diagnostico', 'method'=>'POST', 'autocomplete'=>'off')) !!}
 

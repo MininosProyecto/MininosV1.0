@@ -13,9 +13,14 @@
 
 @section('Contenido')
 
+<<<<<<< HEAD
     @include('ExamenFisico.search')
     <div style="margin-bottom: -65%;">
         {!! Form::open(array('url'=>'ExamenFisico', 'method'=>'POST', 'autocomplete'=>'off')) !!}
+=======
+    <div style="margin-bottom: 5%;">
+        {!! Form::open(array('url'=>'Mascota/ExamenFisico', 'method'=>'POST', 'autocomplete'=>'off')) !!}
+>>>>>>> 91a5e266b28163d3eeb947bfb8d72987dadc0871
         <div class="row">
 
 

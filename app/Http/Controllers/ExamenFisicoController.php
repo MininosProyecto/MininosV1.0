@@ -18,21 +18,27 @@ class ExamenFisicoController extends Controller
     {
         if ($request)
         {
-            $query = trim($request->get('searchText'));
+            $buscar = trim($request->get('BuscarTexto'));
 
             $examen= DB::table('examen_fisico as ex')
                 ->join('historia_clinica as h', 'historiaClinica_id_historiaClinica', '=', 'idHistoriaClinica')
                 ->select('*')
                 ->where([
-                    ['ex.idExamenFisico', 'LIKE', '%'.$query.'%']
+
+                    ['ex.idExamenFisico', 'LIKE', '%'.$buscar.'%']
                 ])
                 ->orWhere([
-                    ['ex.historiaClinica_id_historiaClinica', 'LIKE', '%'.$query.'%']
+                    ['ex.historiaClinica_id_historiaClinica', 'LIKE', '%'.$buscar.'%']
+
                 ])
+
                 ->orderBy('ex.idExamenFisico', 'desc')
                 ->paginate(7);
 
             return view('ExamenFisico.index',compact('examen','query'));
+
+
+
         }
     }
 

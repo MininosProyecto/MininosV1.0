@@ -13,7 +13,6 @@
 @endsection
 
 @section('Contenido')
-    @include('Mascota.historiaClinica.search')
 
     <div style="margin-bottom: 5%;">
         {!! Form::open(array('url'=>'Mascota/historiaClinica', 'method'=>'POST', 'autocomplete'=>'off')) !!}

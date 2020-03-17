@@ -18,18 +18,18 @@ class RazaController extends Controller
     {
         if ($request)
         {
-            $query = trim($request->get('SearchText'));
+            $buscar = trim($request->get('BuscarTexto'));
             $razas = DB::table('raza')
                 ->where([
-                    ['id_raza', 'LIKE', '%' . $query . '%']
+                    ['id_raza', 'LIKE', '%' . $buscar . '%']
                 ])
                 ->orWhere([
-                    ['descripcion', 'LIKE', '%' . $query . '%']
+                    ['descripcion', 'LIKE', '%' . $buscar . '%']
                 ])
                 ->orderBy('id_raza', 'desc')
                 ->paginate(7);
 
-            return view('Mascota.raza.index', compact("razas",'query'));
+            return view('Mascota.raza.index', compact("razas",'buscar'));
         }
     }
 

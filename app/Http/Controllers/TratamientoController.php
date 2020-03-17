@@ -18,7 +18,7 @@ class TratamientoController extends Controller
     {
         if ($request)
         {
-            $query = trim($request->get('SearchText'));
+            $buscar = trim($request->get('BuscarTexto'));
 
             $tratamientos = DB::table('tratamiento as t')
                 ->join('historia_clinica as h', 'historiaClinica_id_historiaClinica', '=', 'idHistoriaClinica')
@@ -26,16 +26,16 @@ class TratamientoController extends Controller
                 ->select('t.*', 'm.nombre_mascota')
 
                 ->where([
-                    ['t.idTratamiento', 'LIKE', '%' . $query . '%'],
-                    ['m.nombre_mascota', 'LIKE', '%' . $query . '%']
+                    ['t.idTratamiento', 'LIKE', '%' . $buscar . '%'],
+                    ['m.nombre_mascota', 'LIKE', '%' . $buscar . '%']
                 ])
                 ->orWhere([
-                    ['t.descripcion', 'LIKE', '%' . $query . '%']
+                    ['t.descripcion', 'LIKE', '%' . $buscar . '%']
                 ])
                 ->orderBy('t.idTratamiento', 'desc')
                 ->paginate(7);
 
-            return view('Mascota.tratamiento.index', compact('tratamientos', 'query'));
+            return view('Mascota.tratamiento.index', compact('tratamientos', 'buscar'));
         }
     }
 

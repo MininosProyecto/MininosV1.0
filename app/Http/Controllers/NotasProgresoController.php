@@ -18,7 +18,7 @@ class NotasProgresoController extends Controller
     {
         if ($request)
         {
-            $query = trim($request->get('searchText'));
+            $buscar = trim($request->get('BuscarTexto'));
 
             $alimentos = DB::table('notas progreso as n')
                 ->join('historia_clinica as h', 'historiaClinica_id_historiaClinica', '=', 'idHistoriaClinica')
@@ -26,16 +26,16 @@ class NotasProgresoController extends Controller
                 ->select('n.*', 'm.nombre_mascota')
 
                 ->where([
-                    ['n.fecha', 'LIKE', '%'.$query.'%'],
-                    ['m.nombre_mascota', 'LIKE', '%'.$query.'%']
+                    ['n.fecha', 'LIKE', '%'.$buscar.'%'],
+                    ['m.nombre_mascota', 'LIKE', '%'.$buscar.'%']
                 ])
                 ->orWhere([
-                    ['n.descripcion', 'LIKE', '%'.$query.'%']
+                    ['n.descripcion', 'LIKE', '%'.$buscar.'%']
                 ])
                 ->orderBy('m.idNotas_Progreso', 'desc')
                 ->paginate(7);
 
-            return view('Mascota.notasProgreso.index',compact('alimentos','query'));
+            return view('Mascota.notasProgreso.index',compact('alimentos','buscar'));
         }
     }
 

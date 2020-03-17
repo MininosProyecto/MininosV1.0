@@ -19,19 +19,19 @@ class EmpleadoController extends Controller
     public function index(Request $request)
     {
         if ($request) {
-            $query = trim($request->get('SearchText'));
+            $buscar = trim($request->get('BuscarTexto'));
 
             $empleados = DB::table('empleado')
                 ->where([
-                    ['idEmpleado', 'LIKE', '%' . $query . '%']
+                    ['idEmpleado', 'LIKE', '%' . $buscar . '%']
                 ])
                 ->orWhere([
-                    ['nombre_empleado', 'LIKE', '%' . $query . '%']
+                    ['nombre_empleado', 'LIKE', '%' . $buscar . '%']
                 ])
                 ->orderBy('idEmpleado', 'desc')
                 ->paginate(7);
 
-            return view('empleado.empleados.index', compact('empleados', 'query'));
+            return view('empleado.empleados.index', compact('empleados', 'buscar'));
         }
 
     }

@@ -17,7 +17,7 @@ class HistoriaClinicaController extends Controller
     {
         if ($request)
         {
-            $query = trim($request->get('searchText'));
+            $buscar = trim($request->get('BuscarTexto'));
 
 //            $clientes = DB::table('clientes as c')
 //            ->join('mascota as m', 'id_mascota', '=', 'Mascota_idMascota')
@@ -28,15 +28,15 @@ class HistoriaClinicaController extends Controller
                 ->join('clientes as c', 'id_cliente', '=', 'Clientes_id_cliente')
                 ->select('h.idHistoriaClinica', 'm.nombre_mascota as Mascota', 'c.nombre_cliente', 'c.nro_documento')
                 ->where([
-                    ['h.idHistoriaClinica', 'LIKE', '%'.$query.'%']
+                    ['h.idHistoriaClinica', 'LIKE', '%'.$buscar.'%']
                 ])
                 ->orWhere([
-                    ['m.nombre_mascota', 'LIKE', '%'.$query.'%']
+                    ['m.nombre_mascota', 'LIKE', '%'.$buscar.'%']
                 ])
                 ->orderBy('h.idHistoriaClinica', 'desc')
                 ->paginate(7);
 
-            return view('Mascota.historiaClinica.index',compact('historiaClinica','query'));
+            return view('Mascota.historiaClinica.index',compact('historiaClinica','buscar'));
         }
     }
 

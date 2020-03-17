@@ -12,7 +12,6 @@
 
 @section('Contenido')
 
-    @include('agenda.search')
     <div style="margin-bottom: -5%;">
 
         {!! Form::open(array('url'=>'agenda', 'method'=>'POST', 'autocomplete'=>'off')) !!}

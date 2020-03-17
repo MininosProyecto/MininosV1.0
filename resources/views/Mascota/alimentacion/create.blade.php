@@ -10,7 +10,6 @@
 
 @section('Contenido')
 
-    @include('Mascota.alimentacion.search')
     <div style="margin-bottom: 5%;">
         {!! Form::open(array('url'=>'Mascota/alimentacion', 'method'=>'POST', 'autocomplete'=>'off')) !!}
 

@@ -12,7 +12,7 @@
 
 @section('Contenido')
 
-    @include('empleado.empleados.search')
+
     <div style="margin-bottom: -5%;">
 
         {!! Form::open(array('url'=>'empleado/empleados', 'method'=>'POST', 'autocomplete'=>'off')) !!}

@@ -18,23 +18,23 @@ use Illuminate\Support\Facades\DB;
     public function index(Request $request)
     {
         if ($request) {
-            $query = trim($request->get('SearchText'));
+            $buscar = trim($request->get('BuscarTexto'));
 
             $vacunas = DB::table('vacunas as v')
                 ->join('historia_clinica as h', 'idHistoriaClinica', '=', 'HistoriaClinica_id_historiaClinica')
                 ->select('v.idVacunas', 'v.nombre_vacuna', 'v.fecha' ,'v.descripcion', 'h.HistoriaClinica_id_historiaClinica as Historia')
                 ->where([
-                    ['idVacunas', 'LIKE', '%' . $query . '%'],
-                    ['nombre_vacuna', 'LIKE', '%' . $query . '%']
+                    ['idVacunas', 'LIKE', '%' . $buscar . '%'],
+                    ['nombre_vacuna', 'LIKE', '%' . $buscar . '%']
 
                 ])
                 ->orWhere([
-                    ['idHistoriaClinica', 'LIKE', '%' . $query . '%']
+                    ['idHistoriaClinica', 'LIKE', '%' . $buscar . '%']
                 ])
                 ->orderBy('idVacunas', 'desc')
                 ->paginate(7);
 
-            return view('vacunas.index', compact('vacunas', 'query'));
+            return view('vacunas.index', compact('vacunas', 'buscar'));
         }
 
     }

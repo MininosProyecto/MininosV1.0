@@ -19,7 +19,7 @@ class CitaMedicaController extends Controller
     {
         if ($request)
         {
-            $query = trim($request->get('searchText'));
+            $buscar = trim($request->get('BuscarTexto'));
 
             $citas = DB::table('cita_medica as cit')
                 ->join('mascota as m', 'id_mascota', '=', 'Mascota_id_mascota')
@@ -27,15 +27,15 @@ class CitaMedicaController extends Controller
 
                 ->select('cit.id_cita', 'm.nombre_mascota', 'a.fecha_agenda' ,'a.estado', 'a.Empleados_id_veterinario')
                 ->where([
-                    ['cit.id_cita', 'LIKE', '%'.$query.'%'],
+                    ['cit.id_cita', 'LIKE', '%'.$buscar.'%'],
                 ])
                 ->orWhere([
-                    ['m.id_mascota', 'LIKE', '%'.$query.'%']
+                    ['m.id_mascota', 'LIKE', '%'.$buscar.'%']
                 ])
                 ->orderBy('cit.id_cita', 'desc')
                 ->paginate(7);
 
-            return view('agenda.citaMedica.index',compact('citas','query'));
+            return view('agenda.citaMedica.index',compact('citas','buscar'));
         }
     }
 

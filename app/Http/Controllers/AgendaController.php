@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Agenda;
 use Illuminate\Http\Request;
-use Illuminate\Http\Request\AgendaRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -21,7 +20,7 @@ class AgendaController extends Controller
     {
         if ($request)
         {
-            $buscar = trim($request->get('searchText'));
+            $buscar = trim($request->get('BuscarTexto'));
 
             $agendas = DB::table('agenda as a')
                 ->join('empleado as e', 'idEmpleado', '=', 'Empleados_id_veterinario')
