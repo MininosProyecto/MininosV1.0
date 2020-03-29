@@ -18,6 +18,7 @@ class UsuarioController extends Controller
             $buscar =  trim($request->get('BuscarTexto'));
 
             $usuarios = DB::table('users')
+                ->select('*')
                 ->where('name', 'LIKE', '%'.$buscar.'%')
                 ->orderBy('id', 'desc')
                 ->paginate(7);
@@ -36,11 +37,10 @@ class UsuarioController extends Controller
     public function store(UsuarioFormRequest $request)
     {
         $usuario = new User();
-        $datos = $request->all();
 
-        $usuario->name = $request->get('datos');
-        $usuario->email = $request->get('datos');
-        $usuario->password = bcrypt($request->get('datos'));
+        $usuario->name = $request->get('name');
+        $usuario->email = $request->get('email');
+        $usuario->password = bcrypt($request->get('password'));
         $usuario->save();
 
         return Redirect::to('seguridad/usuario/create');

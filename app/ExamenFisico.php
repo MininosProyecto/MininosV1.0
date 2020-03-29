@@ -29,6 +29,6 @@ class ExamenFisico extends Model
             'S_Linfatico',
             'Actitud',
             'Hidratacion',
-            'Historia_Clinica_id_historia_clinica'
+            'id_historiaClinica'
         ];
 }

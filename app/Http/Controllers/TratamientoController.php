@@ -20,18 +20,24 @@ class TratamientoController extends Controller
         {
             $buscar = trim($request->get('BuscarTexto'));
 
-            $tratamientos = DB::table('tratamiento as t')
-                ->join('historia_clinica as h', 'historiaClinica_id_historiaClinica', '=', 'idHistoriaClinica')
-                ->join('mascota as m', 'Mascotas_idMascotas', '=', 'id_mascota')
-                ->select('t.*', 'm.nombre_mascota')
+            $tratamientos = DB::table('historia_clinica as h')
+                ->join('mascota as m', 'id_mascota', '=', 'Mascotas_idMascotas')
+                ->join('tratamiento as t', 'idTratamiento', '=', 'id_tratamiento')
+                ->select('h.idHistoriaClinica', 't.*', 'm.nombre_mascota')
 
                 ->where([
-                    ['t.idTratamiento', 'LIKE', '%' . $buscar . '%'],
-                    ['m.nombre_mascota', 'LIKE', '%' . $buscar . '%']
+                    ['m.nombre_mascota', 'LIKE', '%' . $buscar . '%'],
+                    ['m.estado', '=', 'Activo']
                 ])
                 ->orWhere([
+                    ['m.estado', '=', 'Activo'],
                     ['t.descripcion', 'LIKE', '%' . $buscar . '%']
                 ])
+                ->orWhere([
+                    ['t.fecha', 'LIKE', '=', '%'.$buscar.'%'],
+                    ['m.estado', '=', 'Activo']
+                ])
+
                 ->orderBy('t.idTratamiento', 'desc')
                 ->paginate(7);
 
@@ -42,26 +48,19 @@ class TratamientoController extends Controller
 
     public function create()
     {
-        $historiaClinica = DB::table('historia_clinica as h')
-            ->join('mascota as m', 'Mascotas_idMascotas', '=', 'id_mascota')
-            ->select('idHistoriaClinica', 'm.nombre_mascota')
-            ->get();
-
-        return view('Mascota.tratamiento.create', compact('historiaClinica'));
+        return view('Mascota.historiaClinica.create', compact('historiaClinica'));
     }
 
 
     public function store(Request $request)
     {
-        $clientes = new Tratamiento();
+        $tratameinto = new Tratamiento();
 
-        $clientes->fecha = $request->get('fecha');
-        $clientes->descripcion = $request->get('descripcion');
-        $clientes->historiaClinica_id_historiaClinica = $request->get('idHistoria_Clinica');
+        $tratameinto->fecha = $request->get('fecha');
+        $tratameinto->descripcion = $request->get('tratamiento');
+        $tratameinto->save();
 
-        $clientes->save();
-
-        return Redirect('Mascota/tratamiento/create');
+        return Redirect('cliente/create');
     }
 
 
@@ -73,18 +72,24 @@ class TratamientoController extends Controller
 
     public function edit($id)
     {
-        //
+        return view('Mascota.historiaClinica.edit', compact('historiaClinica'));
     }
 
 
     public function update(Request $request, $id)
     {
-        //
+        $tratameinto = Tratamiento::findOrFail($id);
+
+        $tratameinto->fecha = $request->get('fecha');
+        $tratameinto->descripcion = $request->get('tratamiento');
+        $tratameinto->update();
+
+        return Redirect('Mascota/historiaClinica');
     }
 
 
     public function destroy($id)
     {
-        //
+       //
     }
 }

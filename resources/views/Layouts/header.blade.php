@@ -74,12 +74,15 @@
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                    <a class="dropdown-item" href="{{ route('register') }}">{{ __('Nuevo registro') }}</a>
+                    <a class="dropdown-item" href="{{ route('register') }}">
+                        <span data-feather="settings"></span>&nbsp
+                        {{ __('Perfil') }}</a>
 
                     <a class="dropdown-item" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                        {{ __('Cerrar seccion') }}
+                        <span data-feather="log-out"></span>&nbsp
+                        {{ __('Cerrar sesion') }}
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -107,7 +110,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('cliente')}}">
                             <span data-feather="user"></span>
-                            Clientes
+                            Clientes - Mascotas
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('Mascota/historiaClinica')}}">
+                            <span data-feather="activity"></span>
+                            Historia Clinica
                         </a>
                     </li>
 
@@ -115,13 +125,9 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span data-feather="github"></span>
-                            Mascota
+                            Mascotaxxxx
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{url('Mascota/historiaClinica')}}">
-                                <span data-feather="activity"></span> &nbsp
-                                Historia Clinica
-                            </a>
 
                             <a class="dropdown-item" href="{{url('Mascota/raza')}}">
                                 <span data-feather="award"></span> &nbsp

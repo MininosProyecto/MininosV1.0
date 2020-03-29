@@ -44,12 +44,11 @@ class RazaController extends Controller
     {
         $especie = new Raza();
 
-        $especie->id_raza = $request->get('id_raza');
         $especie->descripcion = $request->get('descripcion');
 
         $especie->save();
 
-        return Redirect::to('Mascota/raza/create');
+        return Redirect::to('cliente/create');
     }
 
 

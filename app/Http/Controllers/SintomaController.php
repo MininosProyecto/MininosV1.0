@@ -20,17 +20,22 @@ class SintomaController extends Controller
         {
             $buscar = trim($request->get('BuscarTexto'));
 
-            $sintomas = DB::table('sintomas as s')
-                ->join('historia_clinica as h', 'historiaClinica_id_historiaClinica', '=', 'idHistoriaClinica')
-                ->join('mascota as m', 'Mascotas_idMascotas', '=', 'id_mascota')
-                ->select('s.*', 'm.nombre_mascota')
+            $sintomas = DB::table('historia_clinica as h')
+                ->join('mascota as m', 'id_mascota', '=', 'Mascotas_idMascotas')
+                ->join('sintomas as s', 'idSintomas', '=', 'id_sintomas')
+                ->select('h.idHistoriaClinica', 's.*', 'm.nombre_mascota')
 
                 ->where([
-                    ['s.idSintomas', 'LIKE', '%' . $buscar . '%'],
-                    ['m.nombre_mascota', 'LIKE', '%'.$buscar.'%']
+                    ['m.nombre_mascota', 'LIKE', '%'.$buscar.'%'],
+                    ['m.estado', '=', 'Activo']
                 ])
                 ->orWhere([
+                    ['m.estado', '=', 'Activo'],
                     ['s.descripcion', 'LIKE', '%' . $buscar . '%']
+                ])
+                ->orWhere([
+                    ['s.fecha', 'LIKE', '=', '%'.$buscar.'%'],
+                    ['m.estado', '=', 'Activo']
                 ])
 
                 ->orderBy('s.idSintomas', 'desc')
@@ -43,12 +48,7 @@ class SintomaController extends Controller
 
     public function create()
     {
-        $historiaClinica = DB::table('historia_clinica as h')
-            ->join('mascota as m', 'Mascotas_idMascotas', '=', 'id_mascota')
-            ->select('idHistoriaClinica', 'm.nombre_mascota')
-            ->get();
-
-        return view('Mascota.sintomas.create', compact('historiaClinica'));
+        return view('Mascota.historiaClinica.create');
     }
 
 
@@ -56,13 +56,11 @@ class SintomaController extends Controller
     {
         $sintomas = new Sintoma();
 
-        $sintomas->descripcion = $request->get('descripcion');
+        $sintomas->descripcion = $request->get('sintomas');
         $sintomas->fecha = $request->get('fecha');
-        $sintomas->historiaClinica_id_historiaClinica = $request->get('idHistoria_Clinica');
-
         $sintomas->save();
 
-        return Redirect('Mascota/sintomas/create');
+        return Redirect('cliente/create');
     }
 
     public function show($id)
@@ -73,13 +71,20 @@ class SintomaController extends Controller
 
     public function edit($id)
     {
-        //
+        return view('Mascota.historiaClinica.edit');
     }
 
 
     public function update(Request $request, $id)
     {
-        //
+        $sintomas = Sintoma::findOrFail($id);
+
+        $sintomas->descripcion = $request->get('sintomas');
+        $sintomas->fecha = $request->get('fecha');
+
+        $sintomas->update();
+
+        return Redirect('Mascota/historiaClinica');
     }
 
 

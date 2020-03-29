@@ -11,7 +11,8 @@ class Alimentacion extends Model
     protected $fillable =
         [
             'producto',
-            'historiaClinica_id_historiaClinica'
+            'tipoProducto',
+            'frecuencia'
         ];
 
     public $timestamps = false;

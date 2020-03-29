@@ -12,10 +12,12 @@ class Mascota extends Model
         [
             'nombre_mascota',
             'fecha_nacimiento',
+            'estado',
             'Clientes_id_cliente',
             'Raza_id_raza',
             'Sexo_id_sexo',
-            'Especie_id_especie'
+            'Especie_id_especie',
+            'estado'
         ];
 
     public $timestamps = false;

@@ -18,6 +18,7 @@ class Cliente extends Model
                 'celular',
                 'correo',
                 'direccion',
+                'estado',
                 'fecha_nacimiento'
             ];
 

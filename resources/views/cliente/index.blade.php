@@ -1,11 +1,15 @@
 @extends('Layouts.Dash')
 
 @section('Cabecera')
-    Listado de Clientes
+    Clientes
 @endsection
 
 @section('Listar')
-    <a href="{{url('/cliente/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Nuevo</button></a>
+    <div class="btn-group mr-2">
+        <a href="{{url('/Mascota/mascota')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Mascotas</button></a>
+        <a href="{{url('/Mascota/historiaClinica')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Historia Clinica</button></a>
+        <a href="{{url('/cliente/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Nuevo</button></a>
+    </div>
 @endsection
 
 @section('Contenido')
@@ -36,14 +40,14 @@
                             <td>{{$cli->direccion}}</td>
                             <td>
                                 <a href="{{URL::action('ClienteController@edit', $cli->id_cliente)}}">
-                                    <button class="bnt btn-info">Editar</button>
+                                    <button class="bnt btn-outline-info">Editar</button>
                                 </a>
                                 <a href="" data-target="#modal-delete-{{$cli->id_cliente}}" data-toggle="modal">
-                                    <button class="bnt btn-danger">Eliminar</button>
+                                    <button class="bnt btn-outline-danger">Eliminar</button>
                                 </a>
                             </td>
                         </tr>
-{{--                        @include('almacen.categoria.modal')--}}
+                        @include('cliente.modal')
                     @endforeach
                     </tbody>
                 </table>

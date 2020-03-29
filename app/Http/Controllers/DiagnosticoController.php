@@ -20,18 +20,24 @@ class DiagnosticoController extends Controller
         {
             $buscar = trim($request->get('BuscarTexto'));
 
-            $diagnosticos = DB::table('diagnostico as d')
-                ->join('historia_clinica as h', 'historiaClinica_id_historiaClinica', '=', 'idHistoriaClinica')
-                ->join('mascota as m', 'Mascotas_idMascotas', '=', 'id_mascota')
-                ->select('d.*', 'm.nombre_mascota')
+            $diagnosticos = DB::table('historia_clinica as h')
+                ->join('mascota as m', 'id_mascota', '=', 'Mascotas_idMascotas')
+                ->join('diagnostico as d', 'idDiagnostico', '=', 'id_diagnostico')
+                ->select('h.idHistoriaClinica', 'd.*', 'm.nombre_mascota')
 
                 ->where([
-                    ['d.idDiagnostico', 'LIKE', '%' . $buscar . '%'],
+                    ['m.estado', '=', 'Activo'],
                     ['m.nombre_mascota', 'LIKE', '%' . $buscar . '%']
                 ])
                 ->orWhere([
+                    ['m.estado', '=', 'Activo'],
                     ['d.descripcion', 'LIKE', '%' . $buscar . '%']
                 ])
+                ->orWhere([
+                    ['d.fecha', 'LIKE', '=', '%'.$buscar.'%'],
+                    ['m.estado', '=', 'Activo']
+                ])
+
                 ->orderBy('d.idDiagnostico', 'desc')
                 ->paginate(7);
 
@@ -42,12 +48,7 @@ class DiagnosticoController extends Controller
 
     public function create()
     {
-        $historiaClinica = DB::table('historia_clinica as h')
-            ->join('mascota as m', 'Mascotas_idMascotas', '=', 'id_mascota')
-            ->select('idHistoriaClinica', 'm.nombre_mascota')
-            ->get();
-
-        return view('Mascota.diagnostico.create', compact('historiaClinica'));
+        return view('Mascota.historiaClinica.create');
     }
 
 
@@ -56,12 +57,10 @@ class DiagnosticoController extends Controller
         $diagnosticos = new Diagnostico();
 
         $diagnosticos->fecha = $request->get('fecha');
-        $diagnosticos->descripcion = $request->get('descripcion');
-        $diagnosticos->historiaClinica_id_historiaClinica = $request->get('idHistoria_Clinica');
-
+        $diagnosticos->descripcion = $request->get('diagnostico');
         $diagnosticos->save();
 
-        return Redirect('Mascota/diagnostico/create');
+        return Redirect('cliente/create');
     }
 
 
@@ -79,7 +78,13 @@ class DiagnosticoController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        $diagnosticos = Diagnostico::findOrFail($id);
+
+        $diagnosticos->fecha = $request->get('fecha');
+        $diagnosticos->descripcion = $request->get('diagnostico');
+        $diagnosticos->update();
+
+        return Redirect('Mascota/historiaClinica');
     }
 
 

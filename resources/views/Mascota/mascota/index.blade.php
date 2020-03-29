@@ -1,13 +1,14 @@
 @extends('Layouts.Dash')
 
 @section('Cabecera')
-    Listado Mascotas
+    Mascotas
 @endsection
 
 @section('Listar')
-    <a href="{{url('/Mascota/mascota/create')}}">
-        <button type="button" class="btn btn-sm btn-outline-secondary">Nuevo</button>
-    </a>
+    <div class="btn-group mr-2">
+        <a href="{{url('/cliente')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Clientes</button></a>
+        <a href="{{url('/cliente/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Nuevo</button></a>
+    </div>
 @endsection
 
 @section('Contenido')
@@ -47,7 +48,7 @@
                                 </a>
                             </td>
                         </tr>
-                        {{--                        @include('almacen.categoria.modal')--}}
+                      @include('Mascota.mascota.modal')
                     @endforeach
                     </tbody>
                 </table>

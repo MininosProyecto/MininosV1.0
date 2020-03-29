@@ -21,7 +21,7 @@ class InfoAdicional extends Model
             'fecha_ultimaDesp',
             'frecuenciaBaño',
             'fecha_ultimaVacuna',
-            'historiaClinica_id_historiaClinica'
+            'id_historiaClinica'
         ];
 
     public $timestamps = false;

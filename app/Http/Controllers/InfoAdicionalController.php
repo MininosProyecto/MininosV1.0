@@ -21,14 +21,23 @@ class InfoAdicionalController extends Controller
             $buscar = trim($request->get('BuscarTexto'));
 
             $info= DB::table('info_adicional_historiaclinica as inf')
-                ->join('historia_clinica as h', 'historiaClinica_id_historiaClinica', '=', 'idHistoriaClinica')
-                ->select('*')
+                ->join('historia_clinica as h', 'idHistoriaClinica', '=', 'id_historiaClinica')
+                ->join('mascota as m', 'id_mascota', '=', 'Mascotas_idMascotas')
+                ->select('h.idHistoriaClinica', 'inf.*', 'm.nombre_mascota')
+
                 ->where([
-                    ['inf.idInfoAdd', 'LIKE', '%'.$buscar.'%']
+                    ['m.nombre_mascota', 'LIKE', '%'.$buscar.'%'],
+                    ['m.estado', '=', 'Activo']
                 ])
                 ->orWhere([
-                    ['inf.historiaClinica_id_historiaClinica', 'LIKE', '%'.$buscar.'%']
+                    ['inf.fecha_ultimaDesp', 'LIKE', '%'.$buscar.'%'],
+                    ['m.estado', '=', 'Activo']
                 ])
+                ->orWhere([
+                    ['inf.fecha_ultimaVacuna', 'LIKE', '%'.$buscar.'%'],
+                    ['m.estado', '=', 'Activo']
+                ])
+
                 ->orderBy('inf.idInfoAdd', 'desc')
                 ->paginate(7);
 
@@ -39,8 +48,12 @@ class InfoAdicionalController extends Controller
 
     public function create()
     {
+        $historiaClinica = DB::table('historia_clinica as h')
+            ->join('mascota as m', 'id_mascota', '=', 'Mascotas_idMascotas')
+            ->select('h.idHistoriaClinica', 'm.nombre_mascota')
+            ->get();
 
-        return view('infoAdd.create');
+        return view('infoAdd.create', compact('historiaClinica'));
     }
 
 
@@ -49,59 +62,63 @@ class InfoAdicionalController extends Controller
 
         $info = new InfoAdicional();
 
-        $info->idInfoAdd = $request->get('idInfoAdd');
         $info->detallesExamen = $request->get('detallesExamen');
         $info->listaProblemas = $request->get('listaProblemas');
         $info->DiagDefinitivo = $request->get('DiagDefinitivo');
         $info->ayudasDiagnostico = $request->get('ayudasDiagnostico');
         $info->condCorporal = $request->get('condCorporal');
-        $info->conv_OtrosAnimales =$request->get('conv_OtrosAnimales');
+        $info->conv_OtrosAnimales =$request->get('convivencia');
         $info->enfermedades =$request->get('enfermedades');
         $info->temperamento =$request->get('temperamento');
-        $info->fecha_ultimaDesp =$request->get('fecha_ultimaDesp');
+        $info->fecha_ultimaDesp =$request->get('ultimaDespa');
         $info->frecuenciaBaño =$request->get('frecuenciaBaño');
-        $info->fecha_ultimaVacuna =$request->get('fecha_ultimaVacuna');
-        $info->historiaClinica_id_historiaClinica =$request->get('historiaClinica_id_historiaClinica');
-
+        $info->fecha_ultimaVacuna =$request->get('ultimaVacuna');
+        $info->id_historiaClinica =$request->get('id_historiaClinica');
 
         $info->save();
 
-        return Redirect::to('infoAdd.create');
+        return Redirect::to('infoAdd/create');
     }
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
-        //
+        $historiaClinica = DB::table('historia_clinica as h')
+            ->join('mascota as m', 'id_mascota', '=', 'Mascotas_idMascotas')
+            ->select('h.idHistoriaClinica', 'm.nombre_mascota')
+            ->get();
+
+        return view('infoAdd.edit', compact('historiaClinica'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
-        //
+        $info = InfoAdicional::findOrFail($id);
+
+        $info->detallesExamen = $request->get('detallesExamen');
+        $info->listaProblemas = $request->get('listaProblemas');
+        $info->DiagDefinitivo = $request->get('DiagDefinitivo');
+        $info->ayudasDiagnostico = $request->get('ayudasDiagnostico');
+        $info->condCorporal = $request->get('condCorporal');
+        $info->conv_OtrosAnimales =$request->get('convivencia');
+        $info->enfermedades =$request->get('enfermedades');
+        $info->temperamento =$request->get('temperamento');
+        $info->fecha_ultimaDesp =$request->get('ultimaDespa');
+        $info->frecuenciaBaño =$request->get('frecuenciaBaño');
+        $info->fecha_ultimaVacuna =$request->get('ultimaVacuna');
+        $info->id_historiaClinica =$request->get('id_historiaClinica');
+
+        $info->update();
+
+        return Redirect::to('infoAdd');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         //

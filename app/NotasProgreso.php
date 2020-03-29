@@ -12,7 +12,7 @@ class NotasProgreso extends Model
         [
             'fecha',
             'descripcion',
-            'historiaClinica_id_historiaClinica'
+            'id_historiaClinica'
         ];
 
     public $timestamps = false;

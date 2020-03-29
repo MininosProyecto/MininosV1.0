@@ -11,8 +11,7 @@ class Tratamiento extends Model
     protected $fillable =
         [
             'fecha',
-            'descripcion',
-            'historiaClinica_id_historiaClinica'
+            'descripcion'
         ];
 
     public $timestamps = false;

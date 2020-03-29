@@ -21,18 +21,25 @@ class NotasProgresoController extends Controller
             $buscar = trim($request->get('BuscarTexto'));
 
             $alimentos = DB::table('notas progreso as n')
-                ->join('historia_clinica as h', 'historiaClinica_id_historiaClinica', '=', 'idHistoriaClinica')
-                ->join('mascota as m', 'Mascotas_idMascotas', '=', 'id_mascota')
-                ->select('n.*', 'm.nombre_mascota')
+                ->join('historia_clinica as h', 'idHistoriaClinica', '=', 'id_historiaClinica')
+                ->join('mascota as m', 'id_mascota', '=', 'Mascotas_idMascotas')
+                ->select('h.idHistoriaClinica', 'n.*', 'm.nombre_mascota')
 
                 ->where([
-                    ['n.fecha', 'LIKE', '%'.$buscar.'%'],
-                    ['m.nombre_mascota', 'LIKE', '%'.$buscar.'%']
+                    ['m.nombre_mascota', 'LIKE', '%'.$buscar.'%'],
+                    ['m.estado', '=', 'Activo']
+
                 ])
                 ->orWhere([
-                    ['n.descripcion', 'LIKE', '%'.$buscar.'%']
+                    ['n.descripcion', 'LIKE', '%'.$buscar.'%'],
+                    ['m.estado', '=', 'Activo']
                 ])
-                ->orderBy('m.idNotas_Progreso', 'desc')
+                ->orWhere([
+                    ['n.fecha', 'LIKE', '%'.$buscar.'%'],
+                    ['m.estado', '=', 'Activo']
+                ])
+
+                ->orderBy('n.idNotas_Progreso', 'desc')
                 ->paginate(7);
 
             return view('Mascota.notasProgreso.index',compact('alimentos','buscar'));
@@ -57,7 +64,7 @@ class NotasProgresoController extends Controller
 
         $nota->fecha = $request->get('fecha');
         $nota->descripcion = $request->get('descripcion');
-        $nota->historiaClinica_id_historiaClinica = $request->get('historia');
+        $nota->id_historiaClinica = $request->get('id_historiaClinica');
 
         $nota->save();
 
@@ -74,13 +81,26 @@ class NotasProgresoController extends Controller
 
     public function edit($id)
     {
-        //
+        $historia = DB::table('historia_clinica as h')
+            ->join('mascota as m', 'Mascotas_idMascotas', '=', 'id_mascota')
+            ->select('idHistoriaClinica', 'm.nombre_mascota')
+            ->get();
+
+        return view('Mascota.notasProgreso.edit', compact('historia'));
     }
 
 
     public function update(Request $request, $id)
     {
-        //
+        $nota = NotasProgreso::findOrFail($id);
+
+        $nota->fecha = $request->get('fecha');
+        $nota->descripcion = $request->get('descripcion');
+        $nota->id_historiaClinica = $request->get('id_historiaClinica');
+
+        $nota->update();
+
+        return Redirect::to('Mascota/notasProgreso/create');
     }
 
 

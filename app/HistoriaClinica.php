@@ -11,7 +11,10 @@ class HistoriaClinica extends Model
 
     protected $fillable =
         [
-            'Mascotas_idMascotas'
+            'Mascotas_idMascotas',
+            'id_sintomas',
+            'id_alimentacion'
+
         ];
 
     public $timestamps = false;

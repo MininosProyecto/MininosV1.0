@@ -45,6 +45,8 @@ Route::resource('agenda/citaMedica', 'CitaMedicaController');
 
 Route::resource('infoAdd', 'InfoAdicionalController');
 
+Route::resource('seguridad/usuario', 'UsuarioController');
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');

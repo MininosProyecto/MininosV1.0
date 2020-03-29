@@ -20,14 +20,18 @@ class AlimentacionController extends Controller
         {
             $buscar = trim($request->get('BuscarTexto'));
 
-            $alimentos = DB::table('Alimentacion as a')
-                ->join('historia_clinica as h', 'historiaClinica_id_historiaClinica', '=', 'idHistoriaClinica')
-                ->join('mascota as m', 'Mascotas_idMascotas', '=', 'id_mascota')
-                ->select('a.*', 'm.nombre_mascota')
+            $alimentos = DB::table('historia_clinica as h ')
+                ->join('mascota as m', 'id_mascota', '=', 'Mascotas_idMascotas')
+                ->join('alimentacion as a', 'idAlimentacion', '=', 'id_alimentacion')
+                ->select('h.idHistoriaClinica', 'a.*', 'm.nombre_mascota')
 
                 ->where([
-                    ['a.producto', 'LIKE', '%'.$buscar.'%'],
-                    ['m.nombre_mascota', 'LIKE', '%'.$buscar.'%']
+                    ['m.nombre_mascota', 'LIKE', '%'.$buscar.'%'],
+                    ['m.estado', '=', 'Activo']
+                ])
+                ->orWhere([
+                    ['m.estado', '=', 'Activo'],
+                    ['a.producto', 'LIKE', '%'.$buscar.'%']
                 ])
                 ->orderBy('a.idAlimentacion', 'desc')
                 ->paginate(7);
@@ -39,12 +43,7 @@ class AlimentacionController extends Controller
 
     public function create()
     {
-        $historia = DB::table('historia_clinica as h')
-            ->join('mascota as m', 'Mascotas_idMascotas', '=', 'id_mascota')
-            ->select('idHistoriaClinica', 'm.nombre_mascota')
-            ->get();
-
-        return view('Mascota.alimentacion.create', compact('historia'));
+        return view('Mascota.historiaClinica.create');
     }
 
 
@@ -54,11 +53,11 @@ class AlimentacionController extends Controller
         $alimento = new Alimentacion();
 
         $alimento->producto = $request->get('producto');
-        $alimento->historiaClinica_id_historiaClinica = $request->get('historia');
-
+        $alimento->tipoProducto = $request->get('tipoProducto');
+        $alimento->frecuencia = $request->get('frecuencia');
         $alimento->save();
 
-        return Redirect::to('Mascota/alimentacion/create');
+        return Redirect::to('cliente/create');
     }
 
 
@@ -67,37 +66,35 @@ class AlimentacionController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
-        //
+        $alimentos = Alimentacion::findOrFail($id);
+
+        return view('Mascota.aliementacion', compact('alimentos'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
-        //
+        $alimento = Alimentacion::findOrFail($id);
+
+        $alimento->producto = $request->get('producto');
+        $alimento->tipoProducto = $request->get('tipoProducto');
+        $alimento->frecuencia = $request->get('frecuencia');
+        $alimento->update();
+
+        return Redirect::to('Mascota/alimentacion');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        //
+        $alimento = Alimentacion::findOrFail($id);
+
+        $alimento->estado = '0';
+        $alimento->update();
+
+        return Redirect::to('Mascota/alimentacion');
     }
 }

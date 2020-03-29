@@ -44,7 +44,6 @@ class EspecieController extends Controller
     {
         $especie = new Especie();
 
-        $especie->id_especie = $request->get('id_especie');
         $especie->descripcion = $request->get('descripcion');
 
         $especie->save();

@@ -1,11 +1,20 @@
-<br>
-{!! Form::open(array('url' => 'almacen/categoria', 'method' => 'GET', 'autocomplete' => 'off', 'role' => 'search')) !!}
+{!! Form::open(array('url' => 'seguridad/usuario', 'method' => 'GET', 'autocomplete' => 'off', 'role' => 'search')) !!}
+
 <div class="from-group">
-    <div class="input-group">
-        <input type="text" class="form-control" name="searchText" placeholder="Buscar..." value="{{$query}}">
-        <span class="input-group-btn">
-            <button type="submit" class="btn btn-primary">Buscar</button>
-        </span>
+    <div class="row">
+        <div class="col-6">
+            <div class="input-group">
+
+                <input style="border-color: #333333" class="form-control form-control-dark w-100" type="text"
+                       placeholder="Buscar..." name="BuscarTexto" value="{{$buscar}}">
+
+                <button type="submit" class="btn btn-outline-secondary " style="color: #9c9c9c; margin-bottom: 10px"><a>Buscar</a></button>
+
+            </div>
+        </div>
     </div>
+
 </div>
+<br>
 {!! Form::close() !!}
+

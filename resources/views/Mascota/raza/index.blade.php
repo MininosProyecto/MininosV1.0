@@ -5,7 +5,7 @@
 @endsection
 
 @section('Listar')
-    <a href="{{url('/Mascota/raza/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Nuevo</button></a>
+    <a href="{{url('/cliente/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Nuevo</button></a>
 @endsection
 
 @section('Contenido')

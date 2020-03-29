@@ -1,19 +1,21 @@
 <div class="modal fade modal-slide-in-right" aria-hidden="true" role="dialog" tabindex="-1"
-     id="modal-delete-{{$users->id}}">
+     id="modal-delete-{{$h->idHistoriaClinica}}">
 
-    {!! Form::open(array('method'=>'DELETE','action'=>array('UsuarioController@destroy',$users->id))) !!}
+    {!! Form::open(array('method'=>'DELETE','action'=>array('HistoriaClinicaController@destroy',$h->idHistoriaClinica))) !!}
     <div class="modal-dialog">
         <div class="modal-content">
 
             <div class="modal-header">
-                <h4 class="modal-title">Eliminar Usuario</h4>
+                <h4 class="modal-title">Eliminar Historia Clinica</h4>
+
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">x</span>
                 </button>
+
             </div>
 
             <div class="modal-body">
-                <p>Confirme si desea eliminar el usuario</p>
+                <p style="color: #333333; font-size: medium">Confirme si desea eliminar la historia clinica: {{$h->mascota}}</p>
             </div>
 
             <div class="modal-footer">
