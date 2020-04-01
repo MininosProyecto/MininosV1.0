@@ -48,7 +48,11 @@ class TratamientoController extends Controller
 
     public function create()
     {
-        return view('Mascota.historiaClinica.create', compact('historiaClinica'));
+        $historiaClinica = DB::table('historia_clinica as h')
+            ->join('mascota as m', 'id_mascota', '=', 'Mascotas_idMascotas')
+            ->select('m.id_mascota', 'm.nombre_mascota', 'h.idHistoriaClinica')->get();
+
+        return view('Mascota.tratamiento.create', compact('historiaClinica'));
     }
 
 
@@ -58,9 +62,10 @@ class TratamientoController extends Controller
 
         $tratameinto->fecha = $request->get('fecha');
         $tratameinto->descripcion = $request->get('tratamiento');
+        $tratameinto->id_historiaClinica = $request->get('id_historiaClinica');
         $tratameinto->save();
 
-        return Redirect('cliente/create');
+        return Redirect('Mascota/historiaClinica/');
     }
 
 
@@ -82,6 +87,7 @@ class TratamientoController extends Controller
 
         $tratameinto->fecha = $request->get('fecha');
         $tratameinto->descripcion = $request->get('tratamiento');
+        $tratameinto->id_historiaClinica = $request->get('id_historiaClinica');
         $tratameinto->update();
 
         return Redirect('Mascota/historiaClinica');

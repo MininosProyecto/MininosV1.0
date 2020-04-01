@@ -49,12 +49,12 @@ class NotasProgresoController extends Controller
 
     public function create()
     {
-        $historia = DB::table('historia_clinica as h')
+        $historiaClinica = DB::table('historia_clinica as h')
             ->join('mascota as m', 'Mascotas_idMascotas', '=', 'id_mascota')
             ->select('idHistoriaClinica', 'm.nombre_mascota')
             ->get();
 
-        return view('Mascota.notasProgreso.create', compact('historia'));
+        return view('Mascota.notasProgreso.create', compact('historiaClinica'));
     }
 
 
@@ -68,7 +68,7 @@ class NotasProgresoController extends Controller
 
         $nota->save();
 
-        return Redirect::to('Mascota/notasProgreso/create');
+        return Redirect::to('Mascota/historiaClinica');
     }
 
 
@@ -81,12 +81,12 @@ class NotasProgresoController extends Controller
 
     public function edit($id)
     {
-        $historia = DB::table('historia_clinica as h')
+        $historiaClinica = DB::table('historia_clinica as h')
             ->join('mascota as m', 'Mascotas_idMascotas', '=', 'id_mascota')
             ->select('idHistoriaClinica', 'm.nombre_mascota')
             ->get();
 
-        return view('Mascota.notasProgreso.edit', compact('historia'));
+        return view('Mascota.notasProgreso.edit', compact('historiaClinica'));
     }
 
 
@@ -100,7 +100,7 @@ class NotasProgresoController extends Controller
 
         $nota->update();
 
-        return Redirect::to('Mascota/notasProgreso/create');
+        return Redirect::to('Mascota/historiaClinica');
     }
 
 

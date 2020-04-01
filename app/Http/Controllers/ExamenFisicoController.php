@@ -53,8 +53,8 @@ class ExamenFisicoController extends Controller
     {
         $examen = new ExamenFisico();
 
-        $examen->fc = $request->get('fc');
-        $examen->fr = $request->get('fr');
+        $examen->fc = $request->get('FC');
+        $examen->fr = $request->get('FR');
         $examen->temperatura = $request->get('temperatura');
         $examen->men_mucosa = $request->get('mucosa');
         $examen->pulso = $request->get('pulso');
@@ -71,11 +71,11 @@ class ExamenFisicoController extends Controller
         $examen->S_linfatico = $request->get('linfatico');
         $examen->actitud = $request->get('actitud');
         $examen->hidratacion = $request->get('hidratacion');
-        $examen->idHistoriaClinica = $request->get('idHistoriaClinica');
+        $examen->id_historiaClinica = $request->get('id_historiaClinica');
 
         $examen->save();
 
-        return Redirect::to('Mascota/ExamenFisico/create');
+        return Redirect::to('Mascota/historiaClinica');
     }
 
 
@@ -100,8 +100,8 @@ class ExamenFisicoController extends Controller
     {
         $examen = ExamenFisico::findOrFail($id);
 
-        $examen->fc = $request->get('fc');
-        $examen->fr = $request->get('fr');
+        $examen->fc = $request->get('FC');
+        $examen->fr = $request->get('FR');
         $examen->temperatura = $request->get('temperatura');
         $examen->men_mucosa = $request->get('mucosa');
         $examen->pulso = $request->get('pulso');
@@ -118,6 +118,7 @@ class ExamenFisicoController extends Controller
         $examen->S_linfatico = $request->get('linfatico');
         $examen->actitud = $request->get('actitud');
         $examen->hidratacion = $request->get('hidratacion');
+        $examen->id_historiaClinica = $request->get('id_historiaClinica');
 
         $examen->update();
 

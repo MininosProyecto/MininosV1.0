@@ -33,6 +33,10 @@ Route::resource('Mascota/alimentacion', 'AlimentacionController');
 
 Route::resource('Mascota/notasProgreso', 'NotasProgresoController');
 
+Route::resource('Mascota/infoAdd', 'InfoAdicionalController');
+
+Route::resource('Mascota/ExamenFisico', 'ExamenFisicoController');
+
 Route::resource('agenda', 'AgendaController');
 
 Route::resource('empleado/empleados', 'EmpleadoController');
@@ -42,8 +46,6 @@ Route::resource('empleado/horariosEmpleados', 'HorarioEmpleadoController');
 Route::resource('vacunas', 'VacunaController');
 
 Route::resource('agenda/citaMedica', 'CitaMedicaController');
-
-Route::resource('infoAdd', 'InfoAdicionalController');
 
 Route::resource('seguridad/usuario', 'UsuarioController');
 

@@ -41,7 +41,7 @@ class InfoAdicionalController extends Controller
                 ->orderBy('inf.idInfoAdd', 'desc')
                 ->paginate(7);
 
-            return view('infoAdd.index',compact('info','buscar'));
+            return view('Mascota.infoAdd.index',compact('info','buscar'));
         }
     }
 
@@ -53,7 +53,7 @@ class InfoAdicionalController extends Controller
             ->select('h.idHistoriaClinica', 'm.nombre_mascota')
             ->get();
 
-        return view('infoAdd.create', compact('historiaClinica'));
+        return view('Mascota.infoAdd.create', compact('historiaClinica'));
     }
 
 
@@ -64,8 +64,8 @@ class InfoAdicionalController extends Controller
 
         $info->detallesExamen = $request->get('detallesExamen');
         $info->listaProblemas = $request->get('listaProblemas');
-        $info->DiagDefinitivo = $request->get('DiagDefinitivo');
-        $info->ayudasDiagnostico = $request->get('ayudasDiagnostico');
+        $info->DiagDefinitivo = $request->get('diagDefinitivo');
+        $info->ayudasDiagnostico = $request->get('ayudasDiag');
         $info->condCorporal = $request->get('condCorporal');
         $info->conv_OtrosAnimales =$request->get('convivencia');
         $info->enfermedades =$request->get('enfermedades');
@@ -77,7 +77,7 @@ class InfoAdicionalController extends Controller
 
         $info->save();
 
-        return Redirect::to('infoAdd/create');
+        return Redirect::to('Mascota/historiaClinica');
     }
     public function show($id)
     {
@@ -92,7 +92,7 @@ class InfoAdicionalController extends Controller
             ->select('h.idHistoriaClinica', 'm.nombre_mascota')
             ->get();
 
-        return view('infoAdd.edit', compact('historiaClinica'));
+        return view('Mascota.infoAdd.edit', compact('historiaClinica'));
     }
 
 

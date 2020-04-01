@@ -48,7 +48,11 @@ class DiagnosticoController extends Controller
 
     public function create()
     {
-        return view('Mascota.historiaClinica.create');
+        $historiaClinica = DB::table('historia_clinica as h')
+            ->join('mascota as m', 'id_mascota', '=', 'Mascotas_idMascotas')
+            ->select('m.id_mascota', 'm.nombre_mascota', 'h.idHistoriaClinica')->get();
+
+        return view('Mascota.diagnostico.create', compact('historiaClinica'));
     }
 
 
@@ -58,9 +62,10 @@ class DiagnosticoController extends Controller
 
         $diagnosticos->fecha = $request->get('fecha');
         $diagnosticos->descripcion = $request->get('diagnostico');
+        $diagnosticos->id_historiaClinica = $request->get('id_historiaClinica');
         $diagnosticos->save();
 
-        return Redirect('cliente/create');
+        return Redirect('Mascota/historiaClinica/');
     }
 
 
@@ -72,7 +77,9 @@ class DiagnosticoController extends Controller
 
     public function edit($id)
     {
-        //
+        $diagnostico = Diagnostico::findOrFail($id);
+
+        return view('Mascota.diagnostico.modalDetalles', compact('diagnostico'));
     }
 
 
@@ -82,6 +89,7 @@ class DiagnosticoController extends Controller
 
         $diagnosticos->fecha = $request->get('fecha');
         $diagnosticos->descripcion = $request->get('diagnostico');
+        $diagnosticos->id_historiaClinica = $request->get('id_historiaClinica');
         $diagnosticos->update();
 
         return Redirect('Mascota/historiaClinica');

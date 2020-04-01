@@ -11,7 +11,8 @@ class Diagnostico extends Model
     protected $fillable =
         [
             'fecha',
-            'descripcion'
+            'descripcion',
+            'id_historiaClinca'
         ];
 
     public $timestamps = false;

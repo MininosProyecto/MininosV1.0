@@ -7,8 +7,11 @@
 @section('Listar')
     <div class="btn-group mr-2">
 <!--        <a href="{{url('/Mascota/historiaClinica/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Nuevo</button></a>-->
-        <a href="{{url('/Mascota/sintomas')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Sintomas</button></a>
-        <a href="{{url('/Mascota/tratamiento')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Tratamientos</button></a>
+        <a href="{{url('/Mascota/diagnostico/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Diagnostico</button></a>
+        <a href="{{url('/Mascota/tratamiento/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Tratamiento</button></a>
+        <a href="{{url('/Mascota/notasProgreso/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Notas Progreso</button></a>
+        <a href="{{url('/Mascota/ExamenFisico/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Examen Fisico</button></a>
+        <a href="{{url('/Mascota/infoAdd/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Informacion Adicional</button></a>
     </div>
 @endsection
 

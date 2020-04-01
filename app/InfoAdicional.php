@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class InfoAdicional extends Model
 {
-    protected $table= ' info_adicional_historiaclinica';
+    protected $table= 'info_adicional_historiaclinica';
     protected $primaryKey = 'idInfoAdd';
     protected $fillable =
         [

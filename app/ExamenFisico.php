@@ -13,7 +13,6 @@ class ExamenFisico extends Model
             'FC',
             'FR',
             'Temp',
-            'TLLC',
             'Mem_Mucosa',
             'Pulso',
             'Peso',
@@ -31,4 +30,6 @@ class ExamenFisico extends Model
             'Hidratacion',
             'id_historiaClinica'
         ];
+
+    public $timestamps = false;
 }
