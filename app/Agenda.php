@@ -16,7 +16,8 @@ class Agenda extends Model
             'estado',
             'descripcion',
             'Mascota_id_mascota',
-            'Empleados_id_veterinario'
+            'Empleados_id_veterinario',
+            'Correo'
         ];
 
     public $timestamps = false;

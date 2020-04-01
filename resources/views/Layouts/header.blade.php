@@ -7,7 +7,8 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.5">
     <title>Dashboard Template · Bootstrap</title>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="{{asset('node_modules/sweetalert2/dist/sweetalert2.all.js')}}"></script>
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/dashboard/">
 
     <!-- Bootstrap core CSS -->
@@ -102,7 +103,7 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">
+                        <a class="nav-link active" href="{{url('home')}}">
                             <span data-feather="home"></span>
                             Home <span class="sr-only">(current)</span>
                         </a>

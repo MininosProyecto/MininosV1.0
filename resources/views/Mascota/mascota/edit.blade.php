@@ -92,7 +92,7 @@
 
     <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
         <div class="form-group">
-            <button type="submit" class="btn btn-outline-primary btn-xl" id="Registrar">Actulizar</button>
+            <button type="submit" class="btn btn-outline-primary btn-xl" id="Registrar">Actualizar</button>
         </div>
     </div>
 

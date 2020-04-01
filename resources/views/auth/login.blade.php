@@ -63,6 +63,7 @@
                                         {{ __('Olvidaste tu contraseña?') }}
                                     </a>
                                 @endif
+
                             </div>
                         </div>
                     </form>

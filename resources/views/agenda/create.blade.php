@@ -39,12 +39,14 @@
                 </div>
             </div>
 
-{{--            <div class="col-md-6">--}}
-{{--                <div class="form-group">--}}
-{{--                    <label>Hora</label>--}}
-{{--                    <input type="text" class="form-control" name="Hora" id="Hora">--}}
-{{--                </div>--}}
-{{--            </div>--}}
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Correo</label>
+                    <input type="text" class="form-control" name="Correo" id="Correo">
+
+                </div>
+            </div>
+
 
             <div class="col-md-12">
                 <div class="form-group">
@@ -61,7 +63,7 @@
 
             <div class="col-md-12">
                 <div class="form-group">
-                    <label>Profecional</label>
+                    <label>Profesional</label>
                     <select class="form-control" name="idEmpleado" id="idEmpleado"
                             required="required"
                             data-validation-required-message="Seleccione una opcion" {{old('idEmpleado')}}>
@@ -86,10 +88,24 @@
 
         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
             <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-xl" id="Registrar">Siguiente</button>
+                <button onclick="mensaje()" type="submit" class="btn btn-primary btn-xl" id="Registrar">Siguiente</button>
+
+                <script>
+                    function mensaje() {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Your work has been saved',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }</script>
             </div>
         </div>
 
+
         {!! Form::close() !!}
     </div>
+
+    @include('sweet::alert')
 @endsection
