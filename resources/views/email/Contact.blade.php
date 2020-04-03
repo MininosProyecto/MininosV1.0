@@ -4,10 +4,18 @@
 <head>
     <meta charset ="UTF-8">
     <title>Document</title>
+    <style>
+        h1{
+            color: #005fff;
+
+        }
+    </style>
 </head>
 <body>
-<p><strong>Nombre:</strong>{{$name}}</p>
-<p><strong>Email:</strong>{{$email}}!!</p>
-<p><strong>Mensaje:</strong>{{$mensaje}}!!!!</p>
+<h1 style="font-family: 'Cooper Black';background-color: aliceblue";>MININOS</h1>
+<p>Hola alguien te quiere decir algo...</p>
+<p><strong style="font-family: 'Cooper Black'">Nombre: </strong>{{$name}}</p>
+<p><strong style="font-family: 'Cooper Black'">Email: </strong>{{$email}}</p>
+<p><strong style="font-family: 'Cooper Black'">Mensaje: </strong>{{$mensaje}}</p>
 </body>
 </html>
