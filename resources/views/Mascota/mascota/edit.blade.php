@@ -94,7 +94,11 @@
 
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="form-group">
+<<<<<<< HEAD
             <button type="submit" class="btn btn-sm btn-outline-primary btn-xl" id="Registrar">Guardar Cambios</button>
+=======
+            <button type="submit" class="btn btn-outline-primary btn-xl" id="Registrar">Actualizar</button>
+>>>>>>> 8af1a65344b67eed06f3a59cf391ae32222f5dcb
         </div>
     </div>
 

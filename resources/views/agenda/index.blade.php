@@ -34,7 +34,7 @@
                                 <td>{{$ag->nombre_empleado}}</td>
                                 <td>{{$ag->tipoCita}}</td>
                                 <td>
-                                    <a href="{{URL::action('ClienteController@edit', $ag->idAgenda)}}">
+                                    <a href="{{URL::action('AgendaController@edit', $ag->idAgenda)}}">
                                         <button class="bnt btn-info">Editar</button>
                                     </a>
                                     <a href="" data-target="#modal-delete-{{$ag->idAgenda}}" data-toggle="modal">

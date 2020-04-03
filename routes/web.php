@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::resource('cliente', 'ClienteController');
 
 Route::resource('Mascota/mascota', 'MascotaController');
@@ -48,6 +49,17 @@ Route::resource('vacunas', 'VacunaController');
 Route::resource('agenda/citaMedica', 'CitaMedicaController');
 
 Route::resource('seguridad/usuario', 'UsuarioController');
+
+Route::resource('home', 'HomeController');
+
+Route::resource('contacto', 'ContactoController');
+
+Route::resource('agendaCorreo', 'AgendaCorreoController');
+
+Route::resource('mail', 'MailController');
+
+
+
 
 Auth::routes();
 
