@@ -1,7 +1,7 @@
 @extends('Layouts.Dash')
 
 @section('Cabecera')
-    Listado Citas
+    Citas
 @endsection
 
 @section('Listar')

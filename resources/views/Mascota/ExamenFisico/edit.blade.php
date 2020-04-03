@@ -1,25 +1,25 @@
 @extends('Layouts.Dash')
 
 @section('Cabecera')
-    Registro Examen Fisico
+    Actulizacion Examen Fisico
 @endsection
 
 @section('Listar')
 
-    <a href="{{url('/Mascota/historiaClinica')}}">
-        <button type="button" class="btn btn-sm btn-outline-secondary">Historia Clinica</button></a>
+    <a href="{{url('/Mascota/ExamenFisico')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Listar</button></a>
 
 @endsection
 
 @section('Contenido')
 
-    {!! Form::open(array('url'=>'Mascota/ExamenFisico', 'method'=>'POST', 'autocomplete'=>'off')) !!}
+    {!! Form::model($examen,['method'=>'PUT', 'action'=>['ExamenFisicoController@update', $examen->idExamenFisico]]) !!}
+
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="form-group">
                 <label>Mascota</label>
                 <select name="id_historiaClinica" class="selectpicker form-control" data-live-search="true" data-size="5" required="required"
-                        data-validation-required-message="Seleccione una opcion" {{old('id_historiaClinica')}}>
+                        data-validation-required-message="Seleccione una opcion" value="{{$examen->id_historiaClinica}}">
                     @foreach($historiaClinica as $hisoria)
                         <option value="{{$hisoria->idHistoriaClinica}}">{{$hisoria->nombre_mascota}}</option>
                     @endforeach
@@ -32,7 +32,7 @@
                 <label>Frecuencia Cardiaca (FC)</label>
                 <input type="text" class="form-control" name="FC"
                        required="required"
-                       data-validation-required-message="Ingrese frecuencia cardiaca por favor" {{old('FC')}}>
+                       data-validation-required-message="Ingrese frecuencia cardiaca por favor" value="{{$examen->fc}}">
                 <p class="help-block text-danger"></p>
             </div>
         </div>
@@ -42,7 +42,7 @@
                 <label>Frecuencia Respiratoria (FR)</label>
                 <input type="text" class="form-control" name="FR"
                        required="required"
-                       data-validation-required-message="Ingrese frecuencia respiratoria por favor" {{old('FR')}}>
+                       data-validation-required-message="Ingrese frecuencia respiratoria por favor" value="{{$examen->fr}}">
                 <p class="help-block text-danger"></p>
             </div>
         </div>
@@ -52,7 +52,7 @@
                 <label>Temperatura</label>
                 <input type="'text" class="form-control" name="temperatura"
                        required="required"
-                       data-validation-required-message="Ingrese temperatura por favor" {{old('temperatura')}}>
+                       data-validation-required-message="Ingrese temperatura por favor" value="{{$examen->Temperatura}}">
                 <p class="help-block text-danger"></p>
             </div>
         </div>
@@ -62,7 +62,7 @@
                 <label>Membrana Mucosa</label>
                 <input type="'text" class="form-control" name="mucosa"
                        required="required"
-                       data-validation-required-message="Ingrese membrana mucosa por favor" {{old('mucosa')}}>
+                       data-validation-required-message="Ingrese membrana mucosa por favor" value="{{$examen->men_mucosa}}">
                 <p class="help-block text-danger"></p>
             </div>
         </div>
@@ -72,7 +72,7 @@
                 <label>Pulso</label>
                 <input type="'text" class="form-control" name="pulso"
                        required="required"
-                       data-validation-required-message="Ingrese pulso por favor" {{old('pulso')}}>
+                       data-validation-required-message="Ingrese pulso por favor" value="{{$examen->pulso}}">
                 <p class="help-block text-danger"></p>
             </div>
         </div>
@@ -82,7 +82,7 @@
                 <label>Peso</label>
                 <input type="'text" class="form-control" name="peso"
                        required="required"
-                       data-validation-required-message="Ingrese peso por favor" {{old('peso')}}>
+                       data-validation-required-message="Ingrese peso por favor" value="{{$examen->peso}}">
                 <p class="help-block text-danger"></p>
             </div>
         </div>
@@ -92,7 +92,7 @@
                 <label>Sistema Cardiovascular</label>
                 <input type="'text" class="form-control" name="cardioVascular"
                        required="required"
-                       data-validation-required-message="Ingrese sistema cardiovascular por favor" {{old('cardioVascular')}}>
+                       data-validation-required-message="Ingrese sistema cardiovascular por favor" value="{{$examen->S_cardioVascular}}">
                 <p class="help-block text-danger"></p>
             </div>
         </div>
@@ -101,7 +101,7 @@
                 <label>Sistema Respiratorio</label>
                 <input type="'text" class="form-control" name="respiratorio"
                        required="required"
-                       data-validation-required-message="Ingrese sistema respiratorio por favor" {{old('respiratorio')}}>
+                       data-validation-required-message="Ingrese sistema respiratorio por favor" value="{{$examen->S_respiratorio}}">
                 <p class="help-block text-danger"></p>
             </div>
         </div>
@@ -111,7 +111,7 @@
                 <label>Sistema Nervioso</label>
                 <input type="'text" class="form-control" name="nervioso"
                        required="required"
-                       data-validation-required-message="Ingrese sistema nervioso por favor" {{old('nervioso')}}>
+                       data-validation-required-message="Ingrese sistema nervioso por favor" value="{{$examen->S_nervioso}}">
                 <p class="help-block text-danger"></p>
             </div>
         </div>
@@ -121,7 +121,7 @@
                 <label>Sistema Genitourinario</label>
                 <input type="'text" class="form-control" name="genitaurino"
                        required="required"
-                       data-validation-required-message="Ingrese sistema genitourinario por favor" {{old('genitaurino')}}>
+                       data-validation-required-message="Ingrese sistema genitourinario por favor" value="{{$examen->S_genitaurino}}">
                 <p class="help-block text-danger"></p>
             </div>
         </div>
@@ -131,7 +131,7 @@
                 <label>Sistema Musculo Esquelitico</label>
                 <input type="'text" class="form-control" name="musculoEsqueletico"
                        required="required"
-                       data-validation-required-message="Ingrese sistema musculo esqueletico por favor" {{old('musculoEsqueletico')}}>
+                       data-validation-required-message="Ingrese sistema musculo esqueletico por favor" value="{{$examen->S_musculoEsqueletico}}">
                 <p class="help-block text-danger"></p>
             </div>
         </div>
@@ -141,7 +141,7 @@
                 <label>Sistema Digestivo</label>
                 <input type="'text" class="form-control" name="digestivo"
                        required="required"
-                       data-validation-required-message="Ingrese sistema digestivo por favor" {{old('digestivo')}}>
+                       data-validation-required-message="Ingrese sistema digestivo por favor" value="{{$examen->S_digestivo}}">
                 <p class="help-block text-danger"></p>
             </div>
         </div>
@@ -151,7 +151,7 @@
                 <label>Sistema Tegumentario</label>
                 <input type="'text" class="form-control" name="tegumentario"
                        required="required"
-                       data-validation-required-message="Ingrese ojo por favor" {{old('tegumentario')}}>
+                       data-validation-required-message="Ingrese ojo por favor" value="{{$examen->S_tegumentario}}">
                 <p class="help-block text-danger"></p>
             </div>
         </div>
@@ -161,7 +161,7 @@
                 <label>Sistema Linfatico</label>
                 <input type="'text" class="form-control" name="linfatico"
                        required="required"
-                       data-validation-required-message="Ingrese ojo por favor" {{old('linfatico')}}>
+                       data-validation-required-message="Ingrese ojo por favor" value="{{$examen->S_linfatico}}">
                 <p class="help-block text-danger"></p>
             </div>
         </div>
@@ -171,7 +171,7 @@
                 <label>Ojo</label>
                 <input type="'text" class="form-control" name="ojo"
                        required="required"
-                       data-validation-required-message="Ingrese ojo por favor" {{old('ojo')}}>
+                       data-validation-required-message="Ingrese ojo por favor" value="{{$examen->ojo}}">
                 <p class="help-block text-danger"></p>
             </div>
         </div>
@@ -182,7 +182,7 @@
                 <label>Oido</label>
                 <input type="'text" class="form-control" name="oido"
                        required="required"
-                       data-validation-required-message="Ingrese ojo por favor" {{old('oido')}}>
+                       data-validation-required-message="Ingrese ojo por favor" value="{{$examen->oido}}">
                 <p class="help-block text-danger"></p>
             </div>
         </div>
@@ -193,7 +193,7 @@
                 <label>Actitud</label>
                 <input type="'text" class="form-control" name="actitud"
                        required="required"
-                       data-validation-required-message="Ingrese ojo por favor" {{old('actitud')}}>
+                       data-validation-required-message="Ingrese ojo por favor" value="{{$examen->actitud}}">
                 <p class="help-block text-danger"></p>
             </div>
         </div>
@@ -203,7 +203,7 @@
                 <label>Hidratacion</label>
                 <input type="'text" class="form-control" name="hidratacion"
                        required="required"
-                       data-validation-required-message="Ingrese ojo por favor" {{old('hidratacion')}}>
+                       data-validation-required-message="Ingrese ojo por favor" value="{{$examen->hidratacion}}">
                 <p class="help-block text-danger"></p>
             </div>
         </div>
@@ -211,7 +211,7 @@
         <hr width="1700" style="background: #99999961;">
 
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <button type="submit" class="btn btn-sm btn-outline-primary">Registrar</button>
+            <button type="submit" class="btn btn-sm btn-outline-primary">Guardar Cambios</button>
         </div>
     </div>
 

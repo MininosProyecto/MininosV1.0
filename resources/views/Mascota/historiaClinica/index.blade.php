@@ -1,17 +1,17 @@
 @extends('Layouts.Dash')
 
 @section('Cabecera')
-    Listado Historia Clinica
+    Historia Clinica
 @endsection
 
 @section('Listar')
     <div class="btn-group mr-2">
-<!--        <a href="{{url('/Mascota/historiaClinica/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Nuevo</button></a>-->
-        <a href="{{url('/Mascota/diagnostico/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Diagnostico</button></a>
-        <a href="{{url('/Mascota/tratamiento/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Tratamiento</button></a>
-        <a href="{{url('/Mascota/notasProgreso/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Notas Progreso</button></a>
-        <a href="{{url('/Mascota/ExamenFisico/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Examen Fisico</button></a>
-        <a href="{{url('/Mascota/infoAdd/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Informacion Adicional</button></a>
+        <a href="{{url('/Mascota/diagnostico/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary"><span data-feather="plus"></span> &nbspDiagnostico</button></a>
+        <a href="{{url('/Mascota/tratamiento/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary"><span data-feather="plus"></span> &nbspTratamiento</button></a>
+        <a href="{{url('/Mascota/notasProgreso/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary"><span data-feather="plus"></span> &nbspNotas Progreso</button></a>
+        <a href="{{url('/Mascota/ExamenFisico/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary"><span data-feather="plus"></span> &nbspExamen Fisico</button></a>
+        <a href="{{url('/Mascota/infoAdd/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary"><span data-feather="plus"></span> &nbspInformacion Adicional</button></a>
+        <a href="#"><button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#exampleModal"><span data-feather="search"></span> &nbspInformacion Mascota</button></a>
     </div>
 @endsection
 
@@ -41,9 +41,9 @@
                                 <a href="{{URL::action('HistoriaClinicaController@edit', $h->idHistoriaClinica)}}">
                                     <button class="bnt btn-outline-info"><span data-feather="edit"></span></button>
                                 </a>
-                                <a href="" data-target="#modal-delete-{{$h->idHistoriaClinica}}" data-toggle="modal">
-                                    <button class="bnt btn-outline-danger"><span data-feather="trash-2"></span></button>
-                                </a>
+{{--                                <a href="" data-target="#modal-delete-{{$h->idHistoriaClinica}}" data-toggle="modal">--}}
+{{--                                    <button class="bnt btn-outline-danger"><span data-feather="trash"></span></button>--}}
+{{--                                </a>--}}
                                 <a href="" data-target="#modal-detalle-{{$h->idHistoriaClinica}}" data-toggle="modal">
                                     <button class="bnt btn-warning">Detalle</button>
                                 </a>
@@ -51,6 +51,7 @@
                         </tr>
                          @include('Mascota.historiaClinica.modal')
                          @include('Mascota.historiaClinica.modalDetalle')
+                         @include('Mascota.historiaClinica.modalMascotas')
                     @endforeach
                     </tbody>
                 </table>

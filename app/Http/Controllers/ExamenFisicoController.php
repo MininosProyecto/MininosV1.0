@@ -23,14 +23,14 @@ class ExamenFisicoController extends Controller
 
             $examen= DB::table('examen_fisico as ex')
                 ->join('historia_clinica as h', 'idHistoriaClinica', '=', 'id_historiaClinica')
-                ->join('mascota as m', 'id_mascota', '=', 'Mascotas_idMascotas')
-                ->select('h.idHistoriaClinica', 'e.*', 'm.nombre_mascota')
+                ->join('mascota as m', 'm.id_mascota', '=', 'h.Mascotas_idMascotas')
+                ->select('ex.*', 'h.idHistoriaClinica', 'm.nombre_mascota')
 
                 ->where([
                     ['m.nombre_mascota', 'LIKE', '%'.$buscar.'%'],
                     ['m.estado', 'LIKE', 'Activo']
                 ])
-                ->orderBy('ex.idExamen_Fisico', 'desc')
+                ->orderBy('ex.idExamenFisico', 'desc')
                 ->paginate(7);
 
             return view('Mascota.ExamenFisico.index',compact('examen','buscar'));
@@ -87,12 +87,14 @@ class ExamenFisicoController extends Controller
 
     public function edit($id)
     {
+        $examen = ExamenFisico::findOrFail($id);
+
         $historiaClinica = DB::table('historia_clinica as h')
             ->join('mascota as m', 'id_mascota', '=', 'Mascotas_idMascotas')
             ->select('h.idHistoriaClinica', 'm.nombre_mascota')
             ->get();
 
-        return view('Mascota.ExamenFisico.edit', compact('historiaClinica'));
+        return view('Mascota.ExamenFisico.edit', compact('examen', 'historiaClinica'));
     }
 
 
@@ -122,7 +124,7 @@ class ExamenFisicoController extends Controller
 
         $examen->update();
 
-        return Redirect::to('Mascota/ExamenFisico/create');
+        return Redirect::to('Mascota/ExamenFisico');
     }
 
 

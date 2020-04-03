@@ -1,7 +1,7 @@
 @extends('Layouts.Dash')
 
 @section('Cabecera')
-    Listado Sintomas
+    Sintomas
 @endsection
 
 @section('Listar')

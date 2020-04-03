@@ -121,32 +121,28 @@
                         </a>
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span data-feather="github"></span>
-                            Mascotaxxxx
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+{{--                    <li class="nav-item dropdown">--}}
+{{--                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"--}}
+{{--                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                            <span data-feather="github"></span>--}}
+{{--                            Mascotaxxxx--}}
+{{--                        </a>--}}
+{{--                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">--}}
 
-                            <a class="dropdown-item" href="{{url('Mascota/raza')}}">
-                                <span data-feather="award"></span> &nbsp
-                                Raza
-                            </a>
+{{--                            <a class="dropdown-item" href="{{url('Mascota/raza')}}">--}}
+{{--                                <span data-feather="award"></span> &nbsp--}}
+{{--                                Raza--}}
+{{--                            </a>--}}
 
-                            <a class="dropdown-item" href="{{url('Mascota/alimentacion')}}">
-                                <span data-feather="coffee"></span> &nbsp
-                                Alimentacion
-                            </a>
 
-                            <div class="dropdown-divider"></div>
+{{--                            <div class="dropdown-divider"></div>--}}
 
-                            <a class="dropdown-item" href="{{url('Mascota/mascota')}}">
-                                <span data-feather="align-left"></span> &nbsp
-                                Lista Mascotas
-                            </a>
-                        </div>
-                    </li>
+{{--                            <a class="dropdown-item" href="{{url('Mascota/mascota')}}">--}}
+{{--                                <span data-feather="align-left"></span> &nbsp--}}
+{{--                                Lista Mascotas--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </li>--}}
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('agenda')}}">
@@ -184,9 +180,10 @@
                             Info Mascota
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{url('Mascota/sintomas')}}">
-                                <span data-feather="alert-triangle"></span> &nbsp
-                                Sintomas
+
+                            <a class="dropdown-item" href="{{url('Mascota/raza')}}">
+                                <span data-feather="star"></span> &nbsp
+                                Raza
                             </a>
 
                             <a class="dropdown-item" href="{{url('Mascota/diagnostico')}}">
@@ -206,10 +203,16 @@
 
                             <div class="dropdown-divider"></div>
 
-                            <a class="dropdown-item" href="{{url('infoAdd')}}">
-                                <span data-feather="folder-plus"></span> &nbsp
-                                Info Adiccionar H-C
+                            <a class="dropdown-item" href="{{url('Mascota/ExamenFisico')}}">
+                                <span data-feather="file-minus"></span> &nbsp
+                                Examen Fisico
                             </a>
+
+                            <a class="dropdown-item" href="{{url('Mascota/infoAdd')}}">
+                                <span data-feather="folder-plus"></span> &nbsp
+                                Informacion Adicional
+                            </a>
+
                         </div>
                     </li>
 

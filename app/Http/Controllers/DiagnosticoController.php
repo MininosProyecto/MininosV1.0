@@ -20,10 +20,10 @@ class DiagnosticoController extends Controller
         {
             $buscar = trim($request->get('BuscarTexto'));
 
-            $diagnosticos = DB::table('historia_clinica as h')
-                ->join('mascota as m', 'id_mascota', '=', 'Mascotas_idMascotas')
-                ->join('diagnostico as d', 'idDiagnostico', '=', 'id_diagnostico')
-                ->select('h.idHistoriaClinica', 'd.*', 'm.nombre_mascota')
+            $diagnosticos = DB::table('diagnostico as d')
+                ->join('historia_clinica as h', 'h.idHistoriaClinica', '=', 'd.id_historiaClinica')
+                ->join('mascota as m', 'm.id_mascota', '=', 'h.Mascotas_idMascotas')
+                ->select('d.*', 'h.idHistoriaClinica', 'm.nombre_mascota')
 
                 ->where([
                     ['m.estado', '=', 'Activo'],
@@ -34,7 +34,7 @@ class DiagnosticoController extends Controller
                     ['d.descripcion', 'LIKE', '%' . $buscar . '%']
                 ])
                 ->orWhere([
-                    ['d.fecha', 'LIKE', '=', '%'.$buscar.'%'],
+                    ['d.fecha', 'LIKE', '%'.$buscar.'%'],
                     ['m.estado', '=', 'Activo']
                 ])
 
@@ -79,7 +79,11 @@ class DiagnosticoController extends Controller
     {
         $diagnostico = Diagnostico::findOrFail($id);
 
-        return view('Mascota.diagnostico.modalDetalles', compact('diagnostico'));
+        $historiaClinica = DB::table('historia_clinica as h')
+            ->join('mascota as m', 'm.id_mascota', '=', 'h.Mascotas_idMascotas')
+            ->select('m.id_mascota', 'm.nombre_mascota', 'h.idHistoriaClinica')->get();
+
+        return view('Mascota.diagnostico.edit', compact('diagnostico', 'historiaClinica'));
     }
 
 
@@ -92,7 +96,7 @@ class DiagnosticoController extends Controller
         $diagnosticos->id_historiaClinica = $request->get('id_historiaClinica');
         $diagnosticos->update();
 
-        return Redirect('Mascota/historiaClinica');
+        return Redirect('Mascota/diagnostico');
     }
 
 

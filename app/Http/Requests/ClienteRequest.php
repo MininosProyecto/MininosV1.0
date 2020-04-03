@@ -24,13 +24,13 @@ class ClienteRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre_cliente' => ['required', 'string', 'max:30'],
-            'apellido_cliente' => ['required', 'string', 'max:30'],
+            'nombre_cliente' => ['required'|'string'|'max:30'|'min:3'],
+            'apellido_cliente' => ['required'|'string'|'max:30'],
             'tipo_doc' => ['required'],
-            'numero_doc' => ['required'],
-            'telefono' => ['required'],
-            'celular' => ['required'],
-            'correo' => ['required'],
+            'numero_doc' => ['required'|'numeric'|'max:10'|'min:8' ],
+            'telefono' => ['required'|'numeric'|'max:7'|'min:7'],
+            'celular' => ['required'|'numeric'|'max:10'|'min:10'],
+            'correo' => ['required'|'unique:e-mail'],
             'direccion' => ['required'],
         ];
     }

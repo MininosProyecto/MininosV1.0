@@ -1,20 +1,20 @@
 @extends('Layouts.Dash')
 
 @section('Cabecera')
-    Registro de Tramiento
+    Actualizar Tramiento
 @endsection
 
 @section('Listar')
 
-    <a href="{{url('/Mascota/historiaClinica')}}">
-        <button type="button" class="btn btn-sm btn-outline-secondary">Historia Clinica</button>
+    <a href="{{url('/Mascota/tratamiento')}}">
+        <button type="button" class="btn btn-sm btn-outline-secondary">Listar</button>
     </a>
 
 @endsection
 
 @section('Contenido')
 
-    {!! Form::open(array('url'=>'Mascota/tratamiento', 'method'=>'POST', 'autocomplete'=>'off')) !!}
+    {!! Form::model($tratamiento,['method'=>'PUT', 'action'=>['TratamientoController@update', $tratamiento->idTratamiento]]) !!}
 
     <div class="row">
 
@@ -23,7 +23,7 @@
                 <label>Mascota</label>
                 <select name="id_historiaClinica" class="selectpicker form-control" data-live-search="true"
                         data-size="5" required="required"
-                        data-validation-required-message="Seleccione una opcion" {{old('id_historiaClinica')}}>
+                        data-validation-required-message="Seleccione una opcion" value="{{$tratamiento->id_historiaClinica}}">
                     @foreach($historiaClinica as $historia)
                         <option value="{{$historia->idHistoriaClinica}}">{{$historia->nombre_mascota}}</option>
                     @endforeach
@@ -36,14 +36,14 @@
             <div class="form-group">
                 <label>Fecha Tratamiento</label>
                 <input class="form-control " name="fecha" type="date" required="required"
-                       data-validation-required-message="Ingrese un sintoma por favor">
+                       data-validation-required-message="Ingrese un sintoma por favor" value="{{$tratamiento->fecha}}">
             </div>
         </div>
 
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="form-group">
                 <label>Tratamiento</label>
-                <textarea name="tratamiento" cols="3" rows="3" class="form-control"></textarea>
+                <textarea name="tratamiento" cols="3" rows="3" class="form-control">{{$tratamiento->descripcion}}</textarea>
             </div>
         </div>
 
@@ -52,7 +52,7 @@
         <hr width="1700" style="background: #99999961;">
 
         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-            <button type="submit" class="btn btn-sm btn-outline-primary">Registrar</button>
+            <button type="submit" class="btn btn-outline-primary">Guardar Cambios</button>
         </div>
     </div>
 

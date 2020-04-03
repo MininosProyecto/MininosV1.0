@@ -10,7 +10,7 @@
 
 @section('Contenido')
 
-    @include('infoAdd.search')
+    @include('Mascota.infoAdd.search')
     <div style="margin-bottom: 2%;">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -29,7 +29,7 @@
                             <th data-tablesaw-sortable-col data-tablesaw-priority="0">Fecha Ultima Desparasitacion</th>
                             <th data-tablesaw-sortable-col data-tablesaw-priority="0">Frecuencia Baño</th>
                             <th data-tablesaw-sortable-col data-tablesaw-priority="0">Fecha ultima Vacuna</th>
-                            <th data-tablesaw-sortable-col data-tablesaw-priority="0">Historia Clinica</th>
+                            <th>Acciones</th>
 
                         </tr>
                         </thead>
@@ -47,7 +47,6 @@
                                 <td>{{$i->fecha_ultimaDesp}}</td>
                                 <td>{{$i->frecuenciaBaño}}</td>
                                 <td>{{$i->fecha_ultimaVacuna}}</td>
-                                <td>{{$i->historiaClinica_id_historiaClinica}}</td>
                                 <td>
                                     <a href="{{URL::action('InfoAdicionalController@edit', $i->idInfoAdd)}}">
                                         <button class="bnt btn-info">Editar</button>

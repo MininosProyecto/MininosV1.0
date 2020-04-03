@@ -10,7 +10,7 @@
 
 @section('Contenido')
 
-    @include('ExamenFisico.search')
+    @include('Mascota.ExamenFisico.search')
     <div style="margin-bottom: 2%;">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -21,9 +21,8 @@
                             <th data-tablesaw-sortable-col data-tablesaw-priority="1">FC</th>
                             <th data-tablesaw-sortable-col data-tablesaw-priority="2">FR </th>
                             <th data-tablesaw-sortable-col data-tablesaw-priority="3">Temperatura</th>
-                            <th data-tablesaw-sortable-col data-tablesaw-priority="4">TLLC </th>
-                            <th data-tablesaw-sortable-col data-tablesaw-priority="0">Membrana Mucosa </th>
-                            <th data-tablesaw-sortable-col data-tablesaw-priority="0">Pulso</th>
+                            <th data-tablesaw-sortable-col data-tablesaw-priority="4">Membrana Mucosa </th>
+                            <th data-tablesaw-sortable-col data-tablesaw-priority="5">Pulso</th>
                             <th data-tablesaw-sortable-col data-tablesaw-priority="0">Peso</th>
                             <th data-tablesaw-sortable-col data-tablesaw-priority="0">Sistema Cardiovascular</th>
                             <th data-tablesaw-sortable-col data-tablesaw-priority="0">Sistema Respiratorio</th>
@@ -37,40 +36,38 @@
                             <th data-tablesaw-sortable-col data-tablesaw-priority="0">Sistema Linfaticp</th>
                             <th data-tablesaw-sortable-col data-tablesaw-priority="0">Actitud</th>
                             <th data-tablesaw-sortable-col data-tablesaw-priority="0">Hidratacion</th>
-                            <th data-tablesaw-sortable-col data-tablesaw-priority="0">Historia Clinica</th>
+                            <th>Acciones</th>
 
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($examen as $ex)
                             <tr>
-                                <td>{{$ex->FC}}</td>
-                                <td>{{$ex->FR}}</td>
-                                <td>{{$ex->Temp}}</td>
-                                <td>{{$ex->TLLC}}</td>
-                                <td>{{$ex->Mem_Mucosa}}</td>
-                                <td>{{$ex->Pulso}}</td>
-                                <td>{{$ex->Peso}}</td>
-                                <td>{{$ex->S_Cardiovascular}}</td>
-                                <td>{{$ex->S_Respiratorio}}</td>
-                                <td>{{$ex->S_Nervioso}}</td>
-                                <td>{{$ex->S_Genitourinario}}</td>
-                                <td>{{$ex->S_Musculo_Esqueletico}}</td>
-                                <td>{{$ex->S_Digestivo}}</td>
-                                <td>{{$ex->Ojo}}</td>
-                                <td>{{$ex->Oido}}</td>
-                                <td>{{$ex->S_Tegumentario}}</td>
-                                <td>{{$ex->S_Linfatico}}</td>
-                                <td>{{$ex->Actitud}}</td>
-                                <td>{{$ex->Hidratacion}}</td>
-                                <td>{{$ex->Historia_Clinica_id_historia_clinica}}</td>
+                                <td>{{$ex->fc}}</td>
+                                <td>{{$ex->fr}}</td>
+                                <td>{{$ex->Temperatura}}</td>
+                                <td>{{$ex->men_mucosa}}</td>
+                                <td>{{$ex->pulso}}</td>
+                                <td>{{$ex->peso}}</td>
+                                <td>{{$ex->S_cardioVascular}}</td>
+                                <td>{{$ex->S_respiratorio}}</td>
+                                <td>{{$ex->S_nervioso}}</td>
+                                <td>{{$ex->S_genitaurino}}</td>
+                                <td>{{$ex->S_musculoEsqueletico}}</td>
+                                <td>{{$ex->S_digestivo}}</td>
+                                <td>{{$ex->ojo}}</td>
+                                <td>{{$ex->oido}}</td>
+                                <td>{{$ex->S_tegumentario}}</td>
+                                <td>{{$ex->S_linfatico}}</td>
+                                <td>{{$ex->actitud}}</td>
+                                <td>{{$ex->hidratacion}}</td>
                                 <td>
-                                    <a href="{{URL::action('ExamenFisicoController@edit', $ex->idExamen_Fisico)}}">
+                                    <a href="{{URL::action('ExamenFisicoController@edit', $ex->idExamenFisico)}}">
                                         <button class="bnt btn-info">Editar</button>
                                     </a>
-                                    <a href="" data-target="#modal-delete-{{$ex->idExamen_Fisico}}" data-toggle="modal">
-                                        <button class="bnt btn-danger">Eliminar</button>
-                                    </a>
+{{--                                    <a href="" data-target="#modal-delete-{{$ex->idExamenFisico}}" data-toggle="modal">--}}
+{{--                                        <button class="bnt btn-danger">Eliminar</button>--}}
+{{--                                    </a>--}}
                                 </td>
                             </tr>
                             {{--                        @include('almacen.categoria.modal')--}}

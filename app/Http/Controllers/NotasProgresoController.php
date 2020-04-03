@@ -22,8 +22,8 @@ class NotasProgresoController extends Controller
 
             $alimentos = DB::table('notas progreso as n')
                 ->join('historia_clinica as h', 'idHistoriaClinica', '=', 'id_historiaClinica')
-                ->join('mascota as m', 'id_mascota', '=', 'Mascotas_idMascotas')
-                ->select('h.idHistoriaClinica', 'n.*', 'm.nombre_mascota')
+                ->join('mascota as m', 'm.id_mascota', '=', 'h.Mascotas_idMascotas')
+                ->select('n.*', 'h.idHistoriaClinica', 'm.nombre_mascota')
 
                 ->where([
                     ['m.nombre_mascota', 'LIKE', '%'.$buscar.'%'],
@@ -81,12 +81,14 @@ class NotasProgresoController extends Controller
 
     public function edit($id)
     {
+        $notas = NotasProgreso::findOrFail($id);
+
         $historiaClinica = DB::table('historia_clinica as h')
             ->join('mascota as m', 'Mascotas_idMascotas', '=', 'id_mascota')
             ->select('idHistoriaClinica', 'm.nombre_mascota')
             ->get();
 
-        return view('Mascota.notasProgreso.edit', compact('historiaClinica'));
+        return view('Mascota.notasProgreso.edit', compact('historiaClinica', 'notas'));
     }
 
 
@@ -100,7 +102,7 @@ class NotasProgresoController extends Controller
 
         $nota->update();
 
-        return Redirect::to('Mascota/historiaClinica');
+        return Redirect::to('Mascota/notasProgreso');
     }
 
 

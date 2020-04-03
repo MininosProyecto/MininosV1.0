@@ -105,7 +105,7 @@
         <hr width="1700" style="background: #99999961;">
 
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <button type="submit" class="btn btn-outline-primary">Registrar</button>
+            <button type="submit" class="btn btn-sm btn-outline-primary">Registrar</button>
         </div>
     </div>
     {!! Form::close() !!}

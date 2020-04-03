@@ -1,11 +1,11 @@
 @extends('Layouts.Dash')
 
 @section('Cabecera')
-    Listado Tratamientos
+    Tratamientos
 @endsection
 
 @section('Listar')
-    <a href="{{url('/Mascota/tratamiento/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Nuevo</button></a>
+{{--    <a href="{{url('/Mascota/tratamiento/create')}}"><button type="button" class="btn btn-sm btn-outline-secondary">Nuevo</button></a>--}}
 @endsection
 
 @section('Contenido')
@@ -33,9 +33,9 @@
                                 <a href="{{URL::action('TratamientoController@edit', $tra->idTratamiento)}}">
                                     <button class="bnt btn-info">Editar</button>
                                 </a>
-                                <a href="" data-target="#modal-delete-{{$tra->idTratamiento}}" data-toggle="modal">
-                                    <button class="bnt btn-danger">Eliminar</button>
-                                </a>
+{{--                                <a href="" data-target="#modal-delete-{{$tra->idTratamiento}}" data-toggle="modal">--}}
+{{--                                    <button class="bnt btn-danger">Eliminar</button>--}}
+{{--                                </a>--}}
                             </td>
                         </tr>
                         {{--@include('almacen.categoria.modal')--}}

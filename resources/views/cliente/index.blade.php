@@ -40,10 +40,10 @@
                             <td>{{$cli->direccion}}</td>
                             <td>
                                 <a href="{{URL::action('ClienteController@edit', $cli->id_cliente)}}">
-                                    <button class="bnt btn-outline-info">Editar</button>
+                                    <button class="bnt btn-outline-info"><span data-feather="edit"></span></button>
                                 </a>
                                 <a href="" data-target="#modal-delete-{{$cli->id_cliente}}" data-toggle="modal">
-                                    <button class="bnt btn-outline-danger">Eliminar</button>
+                                    <button class="bnt btn-outline-danger"><span data-feather="trash"></span></button>
                                 </a>
                             </td>
                         </tr>

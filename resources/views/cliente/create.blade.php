@@ -420,34 +420,9 @@
                             </div>
                         </div>
 
-{{--                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">--}}
-{{--                            <div class="form-group">--}}
-{{--                                <label>Diagnostico</label>--}}
-{{--                                <select name="id_diagnostico" class="selectpicker form-control"--}}
-{{--                                        data-live-search="true" data-size="5" {{old('id_diagnostico')}}>--}}
-{{--                                    @foreach($diagnosticos as $d)--}}
-{{--                                        <option value="{{$d->idDiagnostico}}">{{$d->descripcion}}</option>--}}
-{{--                                    @endforeach--}}
-{{--                                </select>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-{{--                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">--}}
-{{--                            <div class="form-group">--}}
-{{--                                <label>Tratamiento</label>--}}
-{{--                                <select name="id_tratamiento" class="selectpicker form-control"--}}
-{{--                                        data-live-search="true" data-size="5" {{old('id_tratamiento')}}>--}}
-{{--                                    @foreach($tratamientos as $t)--}}
-{{--                                        <option value="{{$t->idTratamiento}}">{{$t->descripcion}}</option>--}}
-{{--                                    @endforeach--}}
-{{--                                </select>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-
-
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Registrar</button>
+                                <button type="submit" class="btn btn-sm btn-outline-primary">Registrar</button>
                             </div>
                         </div>
 

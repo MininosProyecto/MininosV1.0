@@ -22,8 +22,8 @@ class InfoAdicionalController extends Controller
 
             $info= DB::table('info_adicional_historiaclinica as inf')
                 ->join('historia_clinica as h', 'idHistoriaClinica', '=', 'id_historiaClinica')
-                ->join('mascota as m', 'id_mascota', '=', 'Mascotas_idMascotas')
-                ->select('h.idHistoriaClinica', 'inf.*', 'm.nombre_mascota')
+                ->join('mascota as m', 'm.id_mascota', '=', 'h.Mascotas_idMascotas')
+                ->select('inf.*', 'h.idHistoriaClinica', 'm.nombre_mascota')
 
                 ->where([
                     ['m.nombre_mascota', 'LIKE', '%'.$buscar.'%'],

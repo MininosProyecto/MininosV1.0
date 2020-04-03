@@ -18,8 +18,8 @@
                     <thead>
                     <tr>
                         <td>Mascota</td>
-                        <td>Id Historia Clinica</td>
-                        <td>Producto</td>
+                        <td>Fecha</td>
+                        <td>Descripcion</td>
                         <td>Acciones</td>
                     </tr>
                     </thead>
@@ -27,14 +27,14 @@
                     @foreach($alimentos as $al)
                         <tr>
                             <td>{{$al->nombre_mascota}}</td>
-                            <td>{{$al->historiaClinica_id_historiaClinica}}</td>
-                            <td>{{$al->producto}}</td>
+                            <td>{{$al->fecha}}</td>
+                            <td>{{$al->descripcion}}</td>
 
                             <td>
-                                <a href="{{URL::action('AlimentacionController@edit', $al->idAlimentacion)}}">
+                                <a href="{{URL::action('NotasProgresoController@edit', $al->idNotas_Progreso)}}">
                                     <button class="bnt btn-info">Editar</button>
                                 </a>
-                                <a href="" data-target="#modal-delete-{{$al->idAlimentacion}}" data-toggle="modal">
+                                <a href="" data-target="#modal-delete-{{$al->idNotas_Progreso}}" data-toggle="modal">
                                     <button class="bnt btn-danger">Eliminar</button>
                                 </a>
                             </td>

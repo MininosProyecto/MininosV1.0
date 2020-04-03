@@ -81,14 +81,18 @@ class HistoriaClinicaController extends Controller
 
     public function edit($id)
     {
-        $historia = DB::table('historia_clinica as h')->select('idHistoriaClinica')
-            ->join('mascota as m', 'id_mascota', '=', 'Mascotas_idMascotas')
-            ->join('sintomas as s', 'idSintomas', '=', 'id_sintomas')
-            ->join('alimentacion as a', 'idAlimentacion', '=', 'id_alimentacion')
-            ->select('s.descripcion', 's.idSintomas', 'a.producto', 'a.idAlimentacion', 'h.*', 'm.nombre_mascota', 'm.id_mascota')
-            ->get();
+        $clinica = DB::table('historia_clinica as h')->select('idHistoriaClinica')
+            ->where('idHistoriaClinica', $id)
+            ->join('mascota as m', 'm.id_mascota', '=', 'h.Mascotas_idMascotas')
+            ->join('sintomas as s', 's.idSintomas', '=', 'h.id_sintomas')
+            ->join('alimentacion as a', 'a.idAlimentacion', '=', 'h.id_alimentacion')
+            ->select('h.*', 's.descripcion', 's.idSintomas', 'a.producto', 'a.idAlimentacion', 'm.nombre_mascota', 'm.id_mascota')
+            ->first();
 
-        return view('Mascota.historiaClinica.edit', compact(['historia', 'mascotas', 'sintomas', 'alimentacion']));
+        $alimentacion = DB::table('alimentacion')->select('idAlimentacion', 'producto')->get();
+        $sintomas = DB::table('sintomas')->select('idSintomas', 'descripcion')->get();
+
+        return view('Mascota.historiaClinica.edit', compact('clinica','alimentacion','sintomas'));
     }
 
 

@@ -1,7 +1,7 @@
 @extends('Layouts.Dash')
 
 @section('Cabecera')
-    Listado Horarios Empleados
+    Empleados
 @endsection
 
 @section('Listar')

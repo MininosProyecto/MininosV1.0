@@ -1,7 +1,7 @@
 @extends('Layouts.Dash')
 
 @section('Cabecera')
-    Listado de Diagnosticos
+    Diagnosticos
 @endsection
 
 @section('Listar')
@@ -35,9 +35,9 @@
                                 <a href="{{URL::action('DiagnosticoController@edit', $diag->idDiagnostico)}}">
                                     <button class="bnt btn-info">Editar</button>
                                 </a>
-                                <a href="" data-target="#modal-delete-{{$diag->idDiagnostico}}" data-toggle="modal">
-                                    <button class="bnt btn-danger">Eliminar</button>
-                                </a>
+{{--                                <a href="" data-target="#modal-delete-{{$diag->idDiagnostico}}" data-toggle="modal">--}}
+{{--                                    <button class="bnt btn-danger">Eliminar</button>--}}
+{{--                                </a>--}}
                             </td>
                         </tr>
                         {{--@include('almacen.categoria.modal')--}}

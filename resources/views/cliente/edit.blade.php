@@ -126,11 +126,11 @@
                 </div>
             </div>
 
-            <hr width="1500" style="background: #99999961;">
+            <hr width="1700" style="background: #99999961;">
 
-            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-group">
-                    <button type="submit" class="btn btn-outline-primary btn-xl" id="Registrar">Actualizar</button>
+                    <button type="submit" class="btn btn-sm btn-outline-primary btn-xl" id="Registrar">Guardar Cambios</button>
                 </div>
             </div>
         </div>

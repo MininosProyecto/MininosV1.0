@@ -1,7 +1,7 @@
 @extends('Layouts.Dash')
 
 @section('Cabecera')
-    Listado Razas
+    Razas
 @endsection
 
 @section('Listar')

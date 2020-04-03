@@ -97,7 +97,7 @@
     </div>
 
         <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
-            <button type="submit" class="btn btn-primary">Siguiente</button>
+            <button type="submit" class="btn btn-sm btn-outline-primary">Siguiente</button>
         </div>
 </div>
         {!! Form::close() !!}

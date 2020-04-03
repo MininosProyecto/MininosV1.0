@@ -64,7 +64,7 @@
 
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-xl" id="Registrar">Registrar</button>
+                    <button type="submit" class="btn btn-sm btn-outline-primary" id="Registrar">Registrar</button>
                 </div>
             </div>
 

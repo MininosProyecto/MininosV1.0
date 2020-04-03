@@ -7,27 +7,27 @@ use Illuminate\Database\Eloquent\Model;
 class ExamenFisico extends Model
 {
     protected $table= 'examen_fisico';
-    protected $primaryKey = 'idExamen_Fisico';
+    protected $primaryKey = 'idExamenFisico';
     protected $fillable =
         [
-            'FC',
-            'FR',
-            'Temp',
-            'Mem_Mucosa',
-            'Pulso',
-            'Peso',
-            'S_Cardiovascular',
-            'S_Respiratorio',
-            'S_Nervioso',
-            'S_Genitourinario',
-            'S_Musculo_Esqueletico',
-            'S_Digestivo',
-            'Ojo',
-            'Oido',
-            'S_Tegumentario',
-            'S_Linfatico',
-            'Actitud',
-            'Hidratacion',
+            'fc',
+            'fr',
+            'temperatura',
+            'mem_mucosa',
+            'pulso',
+            'peso',
+            'S_cardioVascular',
+            'S_respiratorio',
+            'S_nervioso',
+            'S_Genitaurino',
+            'S_musculoEsqueletico',
+            'S_digestivo',
+            'ojo',
+            'oido',
+            'S_tegumentario',
+            'S_linfatico',
+            'actitud',
+            'hidratacion',
             'id_historiaClinica'
         ];
 
